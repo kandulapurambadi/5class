@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wondrous Women - Interactive Learning</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Anek+Telugu:wght@400;600&display=swap" rel="stylesheet">
+    <title>School Day Celebration - Class V English Interactive Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #1565C0;
+            --secondary: #1976D2;
+            --accent: #FFC107;
+            --light: #E3F2FD;
+            --dark: #0D47A1;
+            --telugu-color: #C2185B;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -13,178 +24,360 @@
         }
         
         body {
-            background-color: #016795; /* Peacock Blue */
-            color: white;
-            font-family: 'Comic Neue', cursive;
+            font-family: 'Anek Telugu', sans-serif;
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            color: var(--dark);
             line-height: 1.6;
             padding: 20px;
+            min-height: 100vh;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
         }
         
+        /* Header */
         header {
             text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 50, 100, 0.7);
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
         }
         
         h1 {
             font-size: 2.8rem;
             margin-bottom: 10px;
-            color: #FFD700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .subtitle {
-            font-size: 1.3rem;
-            color: #a3d5ff;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 300;
         }
         
-        .main-content {
+        .class-info {
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 8px 25px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        /* Main Navigation */
+        .main-nav {
+            background-color: #BBDEFB;
+            padding: 15px;
             display: flex;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 10px;
+            justify-content: center;
+            border-bottom: 3px solid var(--primary);
         }
         
-        .lesson-section {
-            flex: 2;
-            min-width: 300px;
-            background-color: rgba(0, 60, 120, 0.8);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        .nav-btn {
+            padding: 10px 20px;
+            background-color: white;
+            border: 2px solid var(--primary);
+            border-radius: 25px;
+            font-family: 'Anek Telugu', sans-serif;
+            font-weight: bold;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .vocabulary-section {
-            flex: 1;
-            min-width: 300px;
-            background-color: rgba(0, 60, 120, 0.8);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        .nav-btn:hover, .nav-btn.active {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Main Content */
+        .content-area {
+            padding: 30px;
+            min-height: 600px;
+        }
+        
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         h2 {
-            color: #FFD700;
-            margin-bottom: 20px;
+            color: var(--secondary);
+            border-bottom: 3px solid var(--accent);
             padding-bottom: 10px;
-            border-bottom: 2px solid #4CAF50;
+            margin-bottom: 25px;
             font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         h3 {
-            color: #a3d5ff;
-            margin: 15px 0 10px;
+            color: var(--primary);
+            margin: 20px 0 15px 0;
             font-size: 1.4rem;
         }
         
-        .lesson-text {
-            font-size: 1.2rem;
+        /* Story Text with Highlighted Words */
+        .story-text {
+            font-size: 1.15rem;
             line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 30px;
         }
         
-        .character {
-            margin: 20px 0;
-            padding: 15px;
-            background-color: rgba(0, 80, 150, 0.5);
-            border-radius: 10px;
-            border-left: 5px solid #4CAF50;
+        .story-text p {
+            margin-bottom: 20px;
+            text-indent: 0;
+            padding-left: 20px;
+            border-left: 3px solid var(--accent);
         }
         
-        .character-name {
-            font-weight: bold;
-            color: #FFD700;
-            font-size: 1.3rem;
+        .highlight-word {
+            background-color: #BBDEFB;
+            padding: 2px 6px;
+            border-radius: 4px;
+            border-bottom: 2px dashed var(--primary);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            position: relative;
         }
         
-        .vocabulary-category {
-            margin-bottom: 25px;
+        .highlight-word:hover {
+            background-color: #90CAF9;
+            transform: translateY(-2px);
         }
         
-        .vocab-list {
-            list-style-type: none;
-            padding-left: 10px;
-        }
+        /* Color coding based on word length */
+        .word-3 { background-color: #FFF9C4; } /* 3 letters */
+        .word-4 { background-color: #C8E6C9; } /* 4 letters */
+        .word-5 { background-color: #FFCCBC; } /* 5 letters */
+        .word-6 { background-color: #D1C4E9; } /* 6 letters */
+        .word-7 { background-color: #E1BEE7; } /* 7+ letters */
         
-        .vocab-list li {
-            padding: 8px 0;
-            border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .telugu {
-            font-family: 'Anek Telugu', sans-serif;
-            font-size: 1.1rem;
-            color: #FFC107;
-        }
-        
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+        /* Vocabulary Cards */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
         
-        button {
-            padding: 12px 25px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
+        .vocab-card {
+            background-color: var(--light);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 6px solid var(--secondary);
+            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+        }
+        
+        .vocab-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .word-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .word {
             font-weight: bold;
+            font-size: 1.4rem;
+            color: var(--secondary);
+        }
+        
+        .sound-btn {
+            background-color: var(--accent);
+            color: var(--dark);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
             transition: all 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
-        button:hover {
-            background-color: #45a049;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        .sound-btn:hover {
+            background-color: var(--secondary);
+            transform: scale(1.1);
+            color: white;
         }
         
-        .highlight {
-            background-color: rgba(255, 215, 0, 0.3);
-            padding: 2px 4px;
-            border-radius: 3px;
+        .pronunciation {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
         }
         
-        .active-category {
-            background-color: #FF5722;
+        .telugu-meaning {
+            color: var(--telugu-color);
+            margin-bottom: 8px;
+            font-family: 'Anek Telugu', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 500;
         }
         
+        .english-meaning {
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .word-length {
+            display: inline-block;
+            padding: 2px 8px;
+            background-color: var(--accent);
+            color: var(--dark);
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+        
+        /* Grammar Tables */
+        .grammar-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .grammar-table th {
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .grammar-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .grammar-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* Word Modal */
+        .word-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        /* Dialogue styling */
+        .dialogue-header {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .dialogue-content {
+            color: var(--dark);
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        /* Footer */
         footer {
             text-align: center;
-            margin-top: 30px;
-            padding: 15px;
-            font-size: 1rem;
-            color: #a3d5ff;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            background-color: var(--dark);
+            color: white;
         }
         
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .main-content {
-                flex-direction: column;
-            }
-            
             h1 {
                 font-size: 2.2rem;
             }
             
-            button {
-                padding: 10px 20px;
-                font-size: 1rem;
+            .main-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 90%;
+                justify-content: center;
+            }
+            
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-area {
+                padding: 20px;
+            }
+            
+            .story-text p {
+                padding-left: 10px;
             }
         }
     </style>
@@ -192,311 +385,931 @@
 <body>
     <div class="container">
         <header>
-		<h1>కందులాపురం బడి </h1>
-            <h1>The Wondrous Women</h1>
-            <p class="subtitle">An Interactive Learning Lesson for Class 5 Students</p>
+            <h1>కందులాపురం బడి</h1>
+            <h1>🎓 School Day Celebration: Wondrous Women</h1>
+            <div class="subtitle">Class V English Reader - Interactive Learning</div>
+            <div class="class-info">Class V - English with Telugu Meanings</div>
         </header>
-        <body>
-    <!-- Navigation Menu -->
-    <div class="navigation">
-        <a href="english-class5.html" class="nav-btn back-btn">← ఇంగ్లిష్ పాఠాల విషయసూచిక [వెనుకకు ]</a>
-           </div>
-      
-</body>
+        
+        <div class="navigation">
+            <a href="english-class5.html" class="nav-btn back-btn">← ఇంగ్లిష్ పాఠాల విషయసూచిక [వెనుకకు]</a>
+        </div>
 
-        <div class="main-content">
-            <section class="lesson-section">
-                <h2>The Story</h2>
-                <div class="lesson-text">
-                    <p>Hi! I am Ameena. Today we are celebrating our School Day. The jubilant atmosphere at school made me rush towards it. I'm very excited as my parents were invited by the headmaster on the occasion. After a long while, I'm going to see all my friends today. I sat in the first row with my brother in my lap and my parents on either side. The programme started. One after the other my schoolmates performed different activities. But out of all, the role play on the 'Wondrous Women' performed by my friends touched my heart. Now, I would like to share those dialogues with all of you.</p>
-                    
-                    <div class="character">
-                        <div class="character-name">Sravani as Mother Teresa:</div>
-                        <p>Let's all be thankful to God for his mercy. I see God in every human being. Service to human is service to God. 'Helping hands are better than praying lips!' So my dear children! Serve the needy. In service alone you find true happiness. God bless you!</p>
-                    </div>
-                    
-                    <div class="character">
-                        <div class="character-name">Revathi as Kalpana Chawla:</div>
-                        <p>Hello friends! Do you know me? I am Kalpana Chawla, the first Indian woman who travelled in space. I was very excited to view the beautiful blue earth from space. Travelling in space is a wonderful experience. I believe in one thing, "Nothing is impossible if you have a strong faith." Thank you, friends!</p>
-                    </div>
-                    
-                    <div class="character">
-                        <div class="character-name">Alekhya as Shakunthala Devi:</div>
-                        <p>Hello! This is Shakunthala Devi. I love mathematics. I play with numbers. My logical thinking, commitment titled me as the 'Human Computer'. So, my dear children! Put your efforts to be successful in your life. Wish you good luck!</p>
-                    </div>
-                    
-                    <div class="character">
-                        <div class="character-name">Swapna as M.S. Subbu Lakshmi:</div>
-                        <p>Music is a special gift. Music enthralls human beings as well as animals. I can say that music is magic. But one has to put in a lot of practice and effort. As you know, 'Practice makes a person perfect.' I am blessed to perform concerts around the world. So, children! Keep on practicing and one day you will become perfect. Bhaja Govindam!</p>
-                    </div>
-                    
-                    <div class="character">
-                        <div class="character-name">Kalyani as Yamini Krishna Murthy:</div>
-                        <p>Hello, dears! I am Yamini Krishna Murthy, an Indian classical dancer of Bharatanatyam and Kuchipudi. I have a great passion for dance. Continuous efforts and hard work lead to excellence. So, children! Enhance your passions. All the best!</p>
-                    </div>
-                    
-                    <div class="character">
-                        <div class="character-name">Sarala as Sarojini Naidu:</div>
-                        <p>Hello, friends! This is Sarojini Naidu. Writing poetry is my hobby. People call me, "The Nightingale of India." Since my fourteenth year, I have been writing poetry. I say that you can also become a poet, if you have an urge, vision and creativity. I wish you good luck in all your efforts.</p>
-                    </div>
-                    
-                    <div class="character">
-                        <div class="character-name">Latha as Jhansi Lakshmi Bai:</div>
-                        <p>Bharath Mathaki Jai! I was the queen of Jhansi. Being a lady, I exhibited my courage by fighting against the British in the 1857 revolt. My dear children, 'Be brave and stand for the nation'. Good luck!</p>
-                    </div>
-                    
-                    <div class="character">
-                        <div class="character-name">Mounika as Mary Kom:</div>
-                        <p>Hai, I'm Mary Kom. I'm an Indian boxer. People call me, 'Magnificent Mary.' I'm interested in martial arts too. My attitude is, 'Don't compromise, you can do it.' A Strong mind is the key to success. Children, try to fly the Indian flag high in the arena of sports and games.</p>
-                    </div>
-                    
-                    <p>After witnessing all the events, my parents realized that education is essential. With confidence and commitment in their voice, they said, "Go ahead, my dear and prove yourself." They assured me to send me to school every day.</p>
+        <nav class="main-nav">
+            <button class="nav-btn active" data-section="story">
+                <i class="fas fa-book-open"></i> School Day Story
+            </button>
+            <button class="nav-btn" data-section="vocabulary">
+                <i class="fas fa-book"></i> All Words
+            </button>
+            <button class="nav-btn" data-section="verbs">
+                <i class="fas fa-running"></i> Verbs
+            </button>
+            <button class="nav-btn" data-section="opposites">
+                <i class="fas fa-exchange-alt"></i> Opposites
+            </button>
+            <button class="nav-btn" data-section="singular-plural">
+                <i class="fas fa-copy"></i> Singular/Plural
+            </button>
+        </nav>
+        
+        <div class="content-area">
+            <!-- Story Section -->
+            <section id="story" class="content-section active">
+                <h2><i class="fas fa-book-open"></i> School Day Celebration</h2>
+                <div class="story-text" id="storyText">
+                    <!-- Story text will be inserted by JavaScript -->
                 </div>
             </section>
             
-            <section class="vocabulary-section">
-                <h2>Vocabulary Learning</h2>
+            <!-- All Words Section -->
+            <section id="vocabulary" class="content-section">
+                <h2><i class="fas fa-book"></i> All Highlighted Words</h2>
+                <p>Words are color-coded by length: <span style="background-color:#FFF9C4; padding:2px 6px;">3 letters</span> <span style="background-color:#C8E6C9; padding:2px 6px;">4 letters</span> <span style="background-color:#FFCCBC; padding:2px 6px;">5 letters</span> <span style="background-color:#D1C4E9; padding:2px 6px;">6 letters</span> <span style="background-color:#E1BEE7; padding:2px 6px;">7+ letters</span></p>
                 
-                <div class="controls">
-                    <button id="btn-three-letter">3-Letter Words</button>
-                    <button id="btn-four-letter">4-Letter Words</button>
-                    <button id="btn-five-letter">5-Letter Words</button>
-                    <button id="btn-verbs">Verbs</button>
-                    <button id="btn-opposites">Opposites</button>
+                <div class="vocab-grid" id="allWordsGrid">
+                    <!-- All words will be inserted by JavaScript -->
                 </div>
+            </section>
+            
+            <!-- Verbs Section -->
+            <section id="verbs" class="content-section">
+                <h2><i class="fas fa-running"></i> Verbs from the Story</h2>
                 
-                <div id="vocabulary-content">
-                    <!-- Content will be loaded here by JavaScript -->
-                    <div class="vocabulary-category">
-                        <h3>3-Letter Words & Meanings (Telugu)</h3>
-                        <ul class="vocab-list">
-                            <li>the <span class="telugu">(నిర్దిష్ట వస్తువు లేదా వ్యక్తిని సూచించే నిర్దిష్ట ఆర్టికల్)</span></li>
-                            <li>and <span class="telugu">(మరియు)</span></li>
-                            <li>was <span class="telugu">(ఉంది - భూతకాల రూపం)</span></li>
-                            <li>are <span class="telugu">(ఉన్నారు)</span></li>
-                            <li>all <span class="telugu">(అన్ని)</span></li>
-                            <li>but <span class="telugu">(కానీ)</span></li>
-                            <li>out <span class="telugu">(బయట)</span></li>
-                            <li>see <span class="telugu">(చూడండి)</span></li>
-                            <li>sat <span class="telugu">(కూర్చున్నాడు)</span></li>
-                            <li>row <span class="telugu">(అడ్డు వరుస)</span></li>
-                            <li>lap <span class="telugu">(మోకాలి పై భాగం)</span></li>
-                            <li>God <span class="telugu">(దేవుడు)</span></li>
-                            <li>for <span class="telugu">(కోసం)</span></li>
-                            <li>his <span class="telugu">(అతని)</span></li>
-                        </ul>
-                    </div>
-                </div>
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Verb</th>
+                            <th>Telugu Meaning</th>
+                            <th>Pronunciation</th>
+                            <th>Example from Story</th>
+                        </tr>
+                    </thead>
+                    <tbody id="verbsTable">
+                        <!-- Verbs will be inserted by JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- Opposites Section -->
+            <section id="opposites" class="content-section">
+                <h2><i class="fas fa-exchange-alt"></i> Opposite Words</h2>
+                
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Word</th>
+                            <th>Telugu Meaning</th>
+                            <th>Opposite Word</th>
+                            <th>Telugu Meaning of Opposite</th>
+                        </tr>
+                    </thead>
+                    <tbody id="oppositesTable">
+                        <!-- Opposites will be inserted by JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- Singular/Plural Section -->
+            <section id="singular-plural" class="content-section">
+                <h2><i class="fas fa-copy"></i> Singular and Plural Forms</h2>
+                
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Singular</th>
+                            <th>Telugu Meaning</th>
+                            <th>Plural</th>
+                            <th>Telugu Meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody id="singularPluralTable">
+                        <!-- Singular/Plural will be inserted by JavaScript -->
+                    </tbody>
+                </table>
             </section>
         </div>
         
         <footer>
-            <p>Designed for Class 5 Students | The Wondrous Women Lesson | Interactive Learning Page</p>
+            <p>Class V English Reader - School Day Celebration: Wondrous Women</p>
+            <p>Interactive Learning Page with Telugu Meanings</p>
         </footer>
     </div>
 
+    <!-- Word Detail Modal -->
+    <div class="word-modal" id="wordModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalContent">
+                <!-- Modal content will be inserted by JavaScript -->
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Vocabulary data
-        const vocabularyData = {
-            threeLetter: {
-                title: "3-Letter Words & Meanings (Telugu)",
-                items: [
-                    { word: "the", meaning: "(నిర్దిష్ట వస్తువు లేదా వ్యక్తిని సూచించే నిర్దిష్ట ఆర్టికల్)" },
-                    { word: "and", meaning: "(మరియు)" },
-                    { word: "was", meaning: "(ఉంది - భూతకాల రూపం)" },
-                    { word: "are", meaning: "(ఉన్నారు)" },
-                    { word: "all", meaning: "(అన్ని)" },
-                    { word: "but", meaning: "(కానీ)" },
-                    { word: "out", meaning: "(బయట)" },
-                    { word: "see", meaning: "(చూడండి)" },
-                    { word: "sat", meaning: "(కూర్చున్నాడు)" },
-                    { word: "row", meaning: "(అడ్డు వరుస)" },
-                    { word: "lap", meaning: "(మోకాలి పై భాగం)" },
-                    { word: "God", meaning: "(దేవుడు)" },
-                    { word: "for", meaning: "(కోసం)" },
-                    { word: "his", meaning: "(అతని)" },
-                    { word: "one", meaning: "(ఒకటి)" },
-                    { word: "you", meaning: "(మీరు)" },
-                    { word: "can", meaning: "(చేయగలరు)" }
-                ]
-            },
-            fourLetter: {
-                title: "4-Letter Words & Meanings (Telugu)",
-                items: [
-                    { word: "Hi!", meaning: "(నమస్కారం!)" },
-                    { word: "Today", meaning: "(ఈ రోజు)" },
-                    { word: "very", meaning: "(చాలా)" },
-                    { word: "excited", meaning: "(ఉత్సాహంగా)" },
-                    { word: "were", meaning: "(ఉండేవారు)" },
-                    { word: "long", meaning: "(పొడవైన)" },
-                    { word: "while", meaning: "(సమయంలో)" },
-                    { word: "with", meaning: "(తో)" },
-                    { word: "first", meaning: "(మొదటి)" },
-                    { word: "side", meaning: "(వైపు)" },
-                    { word: "play", meaning: "(నాటకం)" },
-                    { word: "heart", meaning: "(గుండె)" },
-                    { word: "like", meaning: "(ఇష్టం)" },
-                    { word: "share", meaning: "(పంచుకోండి)" },
-                    { word: "with", meaning: "(తో)" }
-                ]
-            },
-            fiveLetter: {
-                title: "5-Letter Words & Meanings (Telugu)",
-                items: [
-                    { word: "Ameena", meaning: "(అమీనా - ఒక పేరు)" },
-                    { word: "school", meaning: "(బడి)" },
-                    { word: "jubilant", meaning: "(ఆనందంతో కూడిన)" },
-                    { word: "atmosphere", meaning: "(వాతావరణం)" },
-                    { word: "rush", meaning: "(వేగంగా వెళ్ళు)" },
-                    { word: "parents", meaning: "(తల్లిదండ్రులు)" },
-                    { word: "invited", meaning: "(ఆహ్వానించారు)" },
-                    { word: "after", meaning: "(తర్వాత)" },
-                    { word: "going", meaning: "(వెళ్తున్నాను)" },
-                    { word: "friends", meaning: "(స్నేహితులు)" },
-                    { word: "brother", meaning: "(సోదరుడు)" },
-                    { word: "either", meaning: "(గాని)" },
-                    { word: "started", meaning: "(ప్రారంభమైంది)" },
-                    { word: "touched", meaning: "(తాకింది/మనసును కదిలించింది)" },
-                    { word: "human", meaning: "(మానవ)" }
-                ]
-            },
-            verbs: {
-                title: "Verbs from the Lesson",
-                items: [
-                    { word: "celebrating", meaning: "(పండుగ చేస్తున్నారు)" },
-                    { word: "made", meaning: "(చేసింది)" },
-                    { word: "rush", meaning: "(వేగంగా వెళ్ళు)" },
-                    { word: "invited", meaning: "(ఆహ్వానించారు)" },
-                    { word: "going", meaning: "(వెళ్తున్నాను)" },
-                    { word: "see", meaning: "(చూడండి)" },
-                    { word: "sat", meaning: "(కూర్చున్నాడు)" },
-                    { word: "started", meaning: "(ప్రారంభమైంది)" },
-                    { word: "performed", meaning: "(ప్రదర్శించారు)" },
-                    { word: "touched", meaning: "(తాకింది/మనసును కదిలించింది)" },
-                    { word: "share", meaning: "(పంచుకోండి)" },
-                    { word: "thankful", meaning: "(కృతజ్ఞతతో)" },
-                    { word: "see", meaning: "(చూడండి)" },
-                    { word: "serving", meaning: "(సేవ చేయడం)" },
-                    { word: "praying", meaning: "(ప్రార్థన చేయడం)" }
-                ]
-            },
-            opposites: {
-                title: "Opposite Words",
-                items: [
-                    { word: "jubilant", opposite: "sad (విచారంగా)" },
-                    { word: "excited", opposite: "calm (శాంతంగా)" },
-                    { word: "long", opposite: "short (చిన్న)" },
-                    { word: "first", opposite: "last (చివరి)" },
-                    { word: "started", opposite: "ended (ముగిసింది)" },
-                    { word: "different", opposite: "same (అదే)" },
-                    { word: "better", opposite: "worse (చెత్త)" },
-                    { word: "true", opposite: "false (తప్పు)" },
-                    { word: "happiness", opposite: "sadness (దుఃఖం)" },
-                    { word: "possible", opposite: "impossible (అసాధ్యం)" },
-                    { word: "strong", opposite: "weak (బలహీనమైన)" },
-                    { word: "successful", opposite: "unsuccessful (విఫలమైన)" },
-                    { word: "special", opposite: "ordinary (సాధారణ)" },
-                    { word: "perfect", opposite: "imperfect (అసంపూర్ణ)" },
-                    { word: "brave", opposite: "cowardly (పిరికి)" }
-                ]
-            }
-        };
+        // School Day story text
+        const storyText = `Hi! I am Ameena. Today we are celebrating our School Day. The jubilant atmosphere at school made me rush towards it. I'm very excited as my parents were invited by the headmaster on the occasion. After a long while, I'm going to see all my friends today.
 
-        // Get buttons and content area
-        const btnThreeLetter = document.getElementById('btn-three-letter');
-        const btnFourLetter = document.getElementById('btn-four-letter');
-        const btnFiveLetter = document.getElementById('btn-five-letter');
-        const btnVerbs = document.getElementById('btn-verbs');
-        const btnOpposites = document.getElementById('btn-opposites');
-        const vocabularyContent = document.getElementById('vocabulary-content');
-        const buttons = [btnThreeLetter, btnFourLetter, btnFiveLetter, btnVerbs, btnOpposites];
+I sat in the first row with my brother in my lap and my parents on either side. The programme started. One after the other my schoolmates performed different activities. But out of all, the role play on the 'Wondrous Women' performed by my friends touched my heart. Now, I would like to share those dialogues with all of you.
 
-        // Function to display vocabulary
-        function displayVocabulary(category) {
-            const data = vocabularyData[category];
+Sravani as Mother Teresa:
+Let's all be thankful to God for his mercy. I see God in every human being. Service to human is service to God. 'Helping hands are better than praying lips!' So my dear children! Serve the needy. In service alone you find true happiness. God bless you!
+
+Revathi as Kalpana Chawla:
+Hello friends! Do you know me? I am Kalpana Chawla, the first Indian woman who travelled in space. I was very excited to view the beautiful blue earth from space. Travelling in space is a wonderful experience. I believe in one thing, "Nothing is impossible if you have a strong faith." Thank you, friends!
+
+Alekhya as Shakunthala Devi:
+Hello! This is Shakunthala Devi. I love mathematics. I play with numbers. My logical thinking, commitment titled me as the 'Human Computer'. So, my dear children! Put your efforts to be successful in your life. Wish you good luck!
+
+Swapna as M.S. Subbu Lakshmi:
+Music is a special gift. Music enthralls human beings as well as animals. I can say that music is magic. But one has to put in a lot of practice and effort. As you know, 'Practice makes a person perfect.' I am blessed to perform concerts around the world. So, children! Keep on practicing and one day you will become perfect. Bhaja Govindam!
+
+Kalyani as Yamini Krishna Murthy:
+Hello, dears! I am Yamini Krishna Murthy, an Indian classical dancer of Bharatanatyam and Kuchipudi. I have a great passion for dance. Continuous efforts and hard work lead to excellence. So, children! Enhance your passions. All the best!
+
+Sarala as Sarojini Naidu:
+Hello, friends! This is Sarojini Naidu. Writing poetry is my hobby. People call me, "The Nightingale of India." Since my fourteenth year, I have been writing poetry. I say that you can also become a poet, if you have an urge, vision and creativity. I wish you good luck in all your efforts.
+
+Latha as Jhansi Lakshmi Bai:
+Bharath Mathaki Jai! I was the queen of Jhansi. Being a lady, I exhibited my courage by fighting against the British in the 1857 revolt. My dear children, 'Be brave and stand for the nation'. Good luck!
+
+Mounika as Mary Kom:
+Hai, I'm Mary Kom. I'm an Indian boxer. People call me, 'Magnificent Mary.' I'm interested in martial arts too. My attitude is, 'Don't compromise, you can do it.' A Strong mind is the key to success. Children, try to fly the Indian flag high in the arena of sports and games.
+
+After witnessing all the events, my parents realized that education is essential. With confidence and commitment in their voice, they said, "Go ahead, my dear and prove yourself." They assured me to send me to school every day.`;
+
+        // Vocabulary data with Telugu meanings and pronunciation
+        const vocabulary = [
+            // 3-letter words
+            { word: "Hi", length: 2, pronunciation: "/haɪ/", teluguMeaning: "నమస్కారం", englishMeaning: "greeting" },
+            { word: "am", length: 2, pronunciation: "/æm/", teluguMeaning: "నేను", englishMeaning: "first person present" },
+            { word: "Ameena", length: 6, pronunciation: "/əˈmiːnə/", teluguMeaning: "అమీనా", englishMeaning: "name" },
+            { word: "Today", length: 5, pronunciation: "/təˈdeɪ/", teluguMeaning: "ఈ రోజు", englishMeaning: "this day" },
+            { word: "we", length: 2, pronunciation: "/wiː/", teluguMeaning: "మేము", englishMeaning: "first person plural" },
+            { word: "are", length: 3, pronunciation: "/ɑːr/", teluguMeaning: "ఉన్నాము", englishMeaning: "present tense of be" },
+            { word: "celebrating", length: 11, pronunciation: "/ˈselɪbreɪtɪŋ/", teluguMeaning: "పండుగ జరుపుకుంటున్నాము", englishMeaning: "observing with festivities" },
+            { word: "our", length: 3, pronunciation: "/aʊər/", teluguMeaning: "మా", englishMeaning: "belonging to us" },
+            { word: "School", length: 6, pronunciation: "/skuːl/", teluguMeaning: "పాఠశాల", englishMeaning: "place of education" },
+            { word: "Day", length: 3, pronunciation: "/deɪ/", teluguMeaning: "రోజు", englishMeaning: "24-hour period" },
+            { word: "The", length: 3, pronunciation: "/ðə/", teluguMeaning: "", englishMeaning: "definite article" },
+            { word: "jubilant", length: 8, pronunciation: "/ˈdʒuːbɪlənt/", teluguMeaning: "ఆనందభరితమైన", englishMeaning: "full of happiness" },
+            { word: "atmosphere", length: 10, pronunciation: "/ˈætməsfɪər/", teluguMeaning: "వాతావరణం", englishMeaning: "air or mood" },
+            { word: "at", length: 2, pronunciation: "/æt/", teluguMeaning: "వద్ద", englishMeaning: "in the place of" },
+            { word: "made", length: 4, pronunciation: "/meɪd/", teluguMeaning: "చేసింది", englishMeaning: "caused" },
+            { word: "me", length: 2, pronunciation: "/miː/", teluguMeaning: "నన్ను", englishMeaning: "object pronoun" },
+            { word: "rush", length: 4, pronunciation: "/rʌʃ/", teluguMeaning: "వేగంగా వెళ్ళు", englishMeaning: "move quickly" },
+            { word: "towards", length: 7, pronunciation: "/təˈwɔːrdz/", teluguMeaning: "వైపు", englishMeaning: "in the direction of" },
+            { word: "it", length: 2, pronunciation: "/ɪt/", teluguMeaning: "దాని వైపు", englishMeaning: "thing mentioned" },
+            { word: "excited", length: 7, pronunciation: "/ɪkˈsaɪtɪd/", teluguMeaning: "ఉత్సాహంగా", englishMeaning: "feeling enthusiastic" },
+            { word: "as", length: 2, pronunciation: "/æz/", teluguMeaning: "ఎందుకంటే", englishMeaning: "because" },
+            { word: "parents", length: 7, pronunciation: "/ˈpeərənts/", teluguMeaning: "తల్లిదండ్రులు", englishMeaning: "mother and father" },
+            { word: "were", length: 4, pronunciation: "/wɜːr/", teluguMeaning: "ఉన్నారు", englishMeaning: "past tense of be" },
+            { word: "invited", length: 7, pronunciation: "/ɪnˈvaɪtɪd/", teluguMeaning: "ఆహ్వానించబడ్డారు", englishMeaning: "asked to come" },
+            { word: "by", length: 2, pronunciation: "/baɪ/", teluguMeaning: "ద్వారా", englishMeaning: "through" },
+            { word: "headmaster", length: 10, pronunciation: "/ˌhedˈmæstər/", teluguMeaning: "ప్రధానోపాధ్యాయుడు", englishMeaning: "principal" },
+            { word: "on", length: 2, pronunciation: "/ɒn/", teluguMeaning: "పై", englishMeaning: "position" },
+            { word: "occasion", length: 8, pronunciation: "/əˈkeɪʒn/", teluguMeaning: "సందర్భం", englishMeaning: "event" },
+            { word: "After", length: 5, pronunciation: "/ˈæftər/", teluguMeaning: "తర్వాత", englishMeaning: "following in time" },
+            { word: "long", length: 4, pronunciation: "/lɒŋ/", teluguMeaning: "చిన్న", englishMeaning: "great length" },
+            { word: "while", length: 5, pronunciation: "/waɪl/", teluguMeaning: "సమయం", englishMeaning: "period of time" },
+            { word: "going", length: 5, pronunciation: "/ˈɡoʊɪŋ/", teluguMeaning: "వెళుతున్నాను", englishMeaning: "moving" },
+            { word: "to", length: 2, pronunciation: "/tuː/", teluguMeaning: "కు", englishMeaning: "toward" },
+            { word: "see", length: 3, pronunciation: "/siː/", teluguMeaning: "చూడటానికి", englishMeaning: "look at" },
+            { word: "all", length: 3, pronunciation: "/ɔːl/", teluguMeaning: "అన్నీ", englishMeaning: "every one" },
+            { word: "my", length: 2, pronunciation: "/maɪ/", teluguMeaning: "నా", englishMeaning: "belonging to me" },
+            { word: "friends", length: 7, pronunciation: "/frendz/", teluguMeaning: "స్నేహితులు", englishMeaning: "people one likes" },
+            { word: "sat", length: 3, pronunciation: "/sæt/", teluguMeaning: "కూర్చున్నాను", englishMeaning: "past of sit" },
+            { word: "in", length: 2, pronunciation: "/ɪn/", teluguMeaning: "లో", englishMeaning: "inside" },
+            { word: "first", length: 5, pronunciation: "/fɜːrst/", teluguMeaning: "మొదటి", englishMeaning: "coming before others" },
+            { word: "row", length: 3, pronunciation: "/roʊ/", teluguMeaning: "వరుస", englishMeaning: "line" },
+            { word: "with", length: 4, pronunciation: "/wɪð/", teluguMeaning: "తో", englishMeaning: "accompanied by" },
+            { word: "brother", length: 7, pronunciation: "/ˈbrʌðər/", teluguMeaning: "సోదరుడు", englishMeaning: "male sibling" },
+            { word: "lap", length: 3, pronunciation: "/læp/", teluguMeaning: "మోకాళ్లపై", englishMeaning: "area on legs when sitting" },
+            { word: "and", length: 3, pronunciation: "/ænd/", teluguMeaning: "మరియు", englishMeaning: "together with" },
+            { word: "either", length: 6, pronunciation: "/ˈaɪðər/", teluguMeaning: "ఏదైనా", englishMeaning: "one of two" },
+            { word: "side", length: 4, pronunciation: "/saɪd/", teluguMeaning: "వైపు", englishMeaning: "edge" },
+            { word: "programme", length: 9, pronunciation: "/ˈproʊɡræm/", teluguMeaning: "కార్యక్రమం", englishMeaning: "planned event" },
+            { word: "started", length: 7, pronunciation: "/ˈstɑːrtɪd/", teluguMeaning: "ప్రారంభమైంది", englishMeaning: "began" },
+            { word: "One", length: 3, pronunciation: "/wʌn/", teluguMeaning: "ఒక్క", englishMeaning: "single" },
+            { word: "after", length: 5, pronunciation: "/ˈæftər/", teluguMeaning: "తర్వాత", englishMeaning: "following" },
+            { word: "other", length: 5, pronunciation: "/ˈʌðər/", teluguMeaning: "ఇతర", englishMeaning: "different" },
+            { word: "schoolmates", length: 11, pronunciation: "/ˈskuːlmeɪts/", teluguMeaning: "పాఠశాల స్నేహితులు", englishMeaning: "friends at school" },
+            { word: "performed", length: 9, pronunciation: "/pərˈfɔːrmd/", teluguMeaning: "ప్రదర్శించారు", englishMeaning: "presented" },
+            { word: "different", length: 9, pronunciation: "/ˈdɪfrənt/", teluguMeaning: "వివిధ", englishMeaning: "various" },
+            { word: "activities", length: 10, pronunciation: "/ækˈtɪvətiz/", teluguMeaning: "కార్యక్రమాలు", englishMeaning: "actions" },
+            { word: "But", length: 3, pronunciation: "/bʌt/", teluguMeaning: "కానీ", englishMeaning: "however" },
+            { word: "out", length: 3, pronunciation: "/aʊt/", teluguMeaning: "బయట", englishMeaning: "outside" },
+            { word: "of", length: 2, pronunciation: "/əv/", teluguMeaning: "లో", englishMeaning: "belonging to" },
+            { word: "role", length: 4, pronunciation: "/roʊl/", teluguMeaning: "పాత్ర", englishMeaning: "part played" },
+            { word: "play", length: 4, pronunciation: "/pleɪ/", teluguMeaning: "నాటకం", englishMeaning: "drama" },
+            { word: "Wondrous", length: 8, pronunciation: "/ˈwʌndrəs/", teluguMeaning: "అద్భుతమైన", englishMeaning: "wonderful" },
+            { word: "Women", length: 5, pronunciation: "/ˈwɪmɪn/", teluguMeaning: "మహిళలు", englishMeaning: "adult females" },
+            { word: "touched", length: 7, pronunciation: "/tʌtʃt/", teluguMeaning: "స్పృశించింది", englishMeaning: "affected emotionally" },
+            { word: "heart", length: 5, pronunciation: "/hɑːrt/", teluguMeaning: "హృదయం", englishMeaning: "organ that pumps blood" },
+            { word: "Now", length: 3, pronunciation: "/naʊ/", teluguMeaning: "ఇప్పుడు", englishMeaning: "at this time" },
+            { word: "would", length: 5, pronunciation: "/wʊd/", teluguMeaning: "చేస్తాను", englishMeaning: "past of will" },
+            { word: "like", length: 4, pronunciation: "/laɪk/", teluguMeaning: "ఇష్టపడతాను", englishMeaning: "enjoy" },
+            { word: "share", length: 5, pronunciation: "/ʃer/", teluguMeaning: "పంచుకోండి", englishMeaning: "divide among" },
+            { word: "those", length: 5, pronunciation: "/ðoʊz/", teluguMeaning: "ఆ", englishMeaning: "referring to specific ones" },
+            { word: "dialogues", length: 9, pronunciation: "/ˈdaɪəlɒɡz/", teluguMeaning: "సంభాషణలు", englishMeaning: "conversations" },
+            { word: "you", length: 3, pronunciation: "/juː/", teluguMeaning: "మీరు", englishMeaning: "person addressed" },
+            { word: "Sravani", length: 7, pronunciation: "/srəˈvɑːni/", teluguMeaning: "శ్రవణి", englishMeaning: "name" },
+            { word: "Mother", length: 6, pronunciation: "/ˈmʌðər/", teluguMeaning: "తల్లి", englishMeaning: "female parent" },
+            { word: "Teresa", length: 6, pronunciation: "/təˈriːzə/", teluguMeaning: "టెరెసా", englishMeaning: "name" },
+            { word: "Let's", length: 5, pronunciation: "/lets/", teluguMeaning: "చేద్దాం", englishMeaning: "let us" },
+            { word: "thankful", length: 8, pronunciation: "/ˈθæŋkfl/", teluguMeaning: "కృతజ్ఞత", englishMeaning: "grateful" },
+            { word: "God", length: 3, pronunciation: "/ɡɒd/", teluguMeaning: "దేవుడు", englishMeaning: "supreme being" },
+            { word: "for", length: 3, pronunciation: "/fɔːr/", teluguMeaning: "కోసం", englishMeaning: "intended for" },
+            { word: "his", length: 3, pronunciation: "/hɪz/", teluguMeaning: "తన", englishMeaning: "belonging to him" },
+            { word: "mercy", length: 5, pronunciation: "/ˈmɜːrsi/", teluguMeaning: "కరుణ", englishMeaning: "compassion" },
+            { word: "see", length: 3, pronunciation: "/siː/", teluguMeaning: "చూస్తాను", englishMeaning: "look at" },
+            { word: "every", length: 5, pronunciation: "/ˈevri/", teluguMeaning: "ప్రతి", englishMeaning: "each one" },
+            { word: "human", length: 5, pronunciation: "/ˈhjuːmən/", teluguMeaning: "మానవ", englishMeaning: "person" },
+            { word: "being", length: 5, pronunciation: "/ˈbiːɪŋ/", teluguMeaning: "జీవి", englishMeaning: "living creature" },
+            { word: "Service", length: 7, pronunciation: "/ˈsɜːrvɪs/", teluguMeaning: "సేవ", englishMeaning: "act of helping" },
+            { word: "is", length: 2, pronunciation: "/ɪz/", teluguMeaning: "ఉంది", englishMeaning: "exists" },
+            { word: "Helping", length: 7, pronunciation: "/ˈhelpɪŋ/", teluguMeaning: "సహాయం చేసే", englishMeaning: "assisting" },
+            { word: "hands", length: 5, pronunciation: "/hændz/", teluguMeaning: "చేతులు", englishMeaning: "body parts" },
+            { word: "better", length: 6, pronunciation: "/ˈbetər/", teluguMeaning: "మెరుగ్గా", englishMeaning: "more good" },
+            { word: "than", length: 4, pronunciation: "/ðæn/", teluguMeaning: "కంటే", englishMeaning: "compared to" },
+            { word: "praying", length: 7, pronunciation: "/ˈpreɪɪŋ/", teluguMeaning: "ప్రార్థన చేసే", englishMeaning: "worshiping" },
+            { word: "lips", length: 4, pronunciation: "/lɪps/", teluguMeaning: "పెదవులు", englishMeaning: "mouth edges" },
+            { word: "So", length: 2, pronunciation: "/soʊ/", teluguMeaning: "కాబట్టి", englishMeaning: "therefore" },
+            { word: "dear", length: 4, pronunciation: "/dɪər/", teluguMeaning: "ప్రియమైన", englishMeaning: "beloved" },
+            { word: "children", length: 8, pronunciation: "/ˈtʃɪldrən/", teluguMeaning: "పిల్లలు", englishMeaning: "young humans" },
+            { word: "Serve", length: 5, pronunciation: "/sɜːrv/", teluguMeaning: "సేవ చేయండి", englishMeaning: "help" },
+            { word: "needy", length: 5, pronunciation: "/ˈniːdi/", teluguMeaning: "బీదలు", englishMeaning: "poor people" },
+            { word: "alone", length: 5, pronunciation: "/əˈloʊn/", teluguMeaning: "మాత్రమే", englishMeaning: "only" },
+            { word: "find", length: 4, pronunciation: "/faɪnd/", teluguMeaning: "కనుగొంటారు", englishMeaning: "discover" },
+            { word: "true", length: 4, pronunciation: "/truː/", teluguMeaning: "నిజమైన", englishMeaning: "real" },
+            { word: "happiness", length: 9, pronunciation: "/ˈhæpinəs/", teluguMeaning: "సంతోషం", englishMeaning: "state of being happy" },
+            { word: "bless", length: 5, pronunciation: "/bles/", teluguMeaning: "ఆశీర్వదించు", englishMeaning: "make holy" },
+            { word: "Revathi", length: 7, pronunciation: "/rɪˈvɑːθi/", teluguMeaning: "రేవతి", englishMeaning: "name" },
+            { word: "Kalpana", length: 7, pronunciation: "/kəlˈpɑːnə/", teluguMeaning: "కల్పన", englishMeaning: "imagination" },
+            { word: "Chawla", length: 6, pronunciation: "/ˈtʃaʊlə/", teluguMeaning: "చావ్లా", englishMeaning: "surname" },
+            { word: "Hello", length: 5, pronunciation: "/həˈloʊ/", teluguMeaning: "హలో", englishMeaning: "greeting" },
+            { word: "Do", length: 2, pronunciation: "/duː/", teluguMeaning: "చేయండి", englishMeaning: "perform action" },
+            { word: "know", length: 4, pronunciation: "/noʊ/", teluguMeaning: "తెలుసా", englishMeaning: "have knowledge" },
+            { word: "I", length: 1, pronunciation: "/aɪ/", teluguMeaning: "నేను", englishMeaning: "first person" },
+            { word: "first", length: 5, pronunciation: "/fɜːrst/", teluguMeaning: "మొదటి", englishMeaning: "coming before others" },
+            { word: "Indian", length: 6, pronunciation: "/ˈɪndiən/", teluguMeaning: "భారతీయ", englishMeaning: "from India" },
+            { word: "woman", length: 5, pronunciation: "/ˈwʊmən/", teluguMeaning: "మహిళ", englishMeaning: "adult female" },
+            { word: "who", length: 3, pronunciation: "/huː/", teluguMeaning: "ఎవరు", englishMeaning: "which person" },
+            { word: "travelled", length: 9, pronunciation: "/ˈtrævld/", teluguMeaning: "ప్రయాణించారు", englishMeaning: "went on journey" },
+            { word: "space", length: 5, pronunciation: "/speɪs/", teluguMeaning: "బాహ్యాకాశం", englishMeaning: "universe beyond earth" },
+            { word: "very", length: 4, pronunciation: "/ˈveri/", teluguMeaning: "చాలా", englishMeaning: "extremely" },
+            { word: "view", length: 4, pronunciation: "/vjuː/", teluguMeaning: "చూడటానికి", englishMeaning: "look at" },
+            { word: "beautiful", length: 9, pronunciation: "/ˈbjuːtɪfl/", teluguMeaning: "అందమైన", englishMeaning: "pleasing to eye" },
+            { word: "blue", length: 4, pronunciation: "/bluː/", teluguMeaning: "నీలం", englishMeaning: "color of sky" },
+            { word: "earth", length: 5, pronunciation: "/ɜːrθ/", teluguMeaning: "భూమి", englishMeaning: "planet" },
+            { word: "from", length: 4, pronunciation: "/frɒm/", teluguMeaning: "నుండి", englishMeaning: "starting at" },
+            { word: "Travelling", length: 10, pronunciation: "/ˈtrævəlɪŋ/", teluguMeaning: "ప్రయాణం", englishMeaning: "going on journey" },
+            { word: "wonderful", length: 9, pronunciation: "/ˈwʌndərfl/", teluguMeaning: "అద్భుతమైన", englishMeaning: "excellent" },
+            { word: "experience", length: 10, pronunciation: "/ɪkˈspɪəriəns/", teluguMeaning: "అనుభవం", englishMeaning: "event lived through" },
+            { word: "believe", length: 7, pronunciation: "/bɪˈliːv/", teluguMeaning: "నమ్మండి", englishMeaning: "accept as true" },
+            { word: "thing", length: 5, pronunciation: "/θɪŋ/", teluguMeaning: "విషయం", englishMeaning: "item" },
+            { word: "Nothing", length: 7, pronunciation: "/ˈnʌθɪŋ/", teluguMeaning: "ఏమీ లేదు", englishMeaning: "not anything" },
+            { word: "impossible", length: 10, pronunciation: "/ɪmˈpɒsəbl/", teluguMeaning: "అసాధ్యం", englishMeaning: "cannot be done" },
+            { word: "if", length: 2, pronunciation: "/ɪf/", teluguMeaning: "ఒకవేళ", englishMeaning: "on condition that" },
+            { word: "have", length: 4, pronunciation: "/hæv/", teluguMeaning: "కలిగి ఉంటే", englishMeaning: "possess" },
+            { word: "strong", length: 6, pronunciation: "/strɒŋ/", teluguMeaning: "బలమైన", englishMeaning: "powerful" },
+            { word: "faith", length: 5, pronunciation: "/feɪθ/", teluguMeaning: "విశ్వాసం", englishMeaning: "belief" },
+            { word: "Thank", length: 5, pronunciation: "/θæŋk/", teluguMeaning: "ధన్యవాదాలు", englishMeaning: "express gratitude" },
+            { word: "Alekhya", length: 7, pronunciation: "/əˈlekjə/", teluguMeaning: "అలేఖ్య", englishMeaning: "name" },
+            { word: "Shakunthala", length: 11, pronunciation: "/ʃəˈkʊnθələ/", teluguMeaning: "శకుంతల", englishMeaning: "name" },
+            { word: "Devi", length: 4, pronunciation: "/ˈdeɪvi/", teluguMeaning: "దేవి", englishMeaning: "goddess" },
+            { word: "love", length: 4, pronunciation: "/lʌv/", teluguMeaning: "ఇష్టం", englishMeaning: "like very much" },
+            { word: "mathematics", length: 11, pronunciation: "/ˌmæθəˈmætɪks/", teluguMeaning: "గణితం", englishMeaning: "study of numbers" },
+            { word: "play", length: 4, pronunciation: "/pleɪ/", teluguMeaning: "ఆడతాను", englishMeaning: "engage in game" },
+            { word: "numbers", length: 7, pronunciation: "/ˈnʌmbərz/", teluguMeaning: "సంఖ్యలు", englishMeaning: "mathematical values" },
+            { word: "logical", length: 7, pronunciation: "/ˈlɒdʒɪkl/", teluguMeaning: "తార్కిక", englishMeaning: "based on reason" },
+            { word: "thinking", length: 8, pronunciation: "/ˈθɪŋkɪŋ/", teluguMeaning: "ఆలోచన", englishMeaning: "process of thought" },
+            { word: "commitment", length: 10, pronunciation: "/kəˈmɪtmənt/", teluguMeaning: "కట్టుబడి", englishMeaning: "dedication" },
+            { word: "titled", length: 6, pronunciation: "/ˈtaɪtld/", teluguMeaning: "బిరుదు ఇచ్చింది", englishMeaning: "given a title" },
+            { word: "Human", length: 5, pronunciation: "/ˈhjuːmən/", teluguMeaning: "మానవ", englishMeaning: "person" },
+            { word: "Computer", length: 8, pronunciation: "/kəmˈpjuːtər/", teluguMeaning: "కంప్యూటర్", englishMeaning: "electronic device" },
+            { word: "Put", length: 3, pronunciation: "/pʊt/", teluguMeaning: "పెట్టండి", englishMeaning: "place" },
+            { word: "your", length: 4, pronunciation: "/jɔːr/", teluguMeaning: "మీ", englishMeaning: "belonging to you" },
+            { word: "efforts", length: 7, pronunciation: "/ˈefərts/", teluguMeaning: "ప్రయత్నాలు", englishMeaning: "attempts" },
+            { word: "be", length: 2, pronunciation: "/biː/", teluguMeaning: "అవ్వటానికి", englishMeaning: "exist" },
+            { word: "successful", length: 10, pronunciation: "/səkˈsesfl/", teluguMeaning: "విజయవంతమైన", englishMeaning: "achieving success" },
+            { word: "life", length: 4, pronunciation: "/laɪf/", teluguMeaning: "జీవితం", englishMeaning: "existence" },
+            { word: "Wish", length: 4, pronunciation: "/wɪʃ/", teluguMeaning: "కోరుకుంటున్నాను", englishMeaning: "desire" },
+            { word: "good", length: 4, pronunciation: "/ɡʊd/", teluguMeaning: "మంచి", englishMeaning: "of high quality" },
+            { word: "luck", length: 4, pronunciation: "/lʌk/", teluguMeaning: "అదృష్టం", englishMeaning: "chance" },
+            { word: "Swapna", length: 6, pronunciation: "/ˈswɑːpnə/", teluguMeaning: "స్వప్న", englishMeaning: "dream" },
+            { word: "M.S.", length: 4, pronunciation: "/ˌem ˈes/", teluguMeaning: "ఎమ్.ఎస్.", englishMeaning: "initials" },
+            { word: "Subbu", length: 5, pronunciation: "/ˈsʌbuː/", teluguMeaning: "సుబ్బు", englishMeaning: "name" },
+            { word: "Lakshmi", length: 7, pronunciation: "/ˈlɑːkʃmi/", teluguMeaning: "లక్ష్మి", englishMeaning: "goddess of wealth" },
+            { word: "Music", length: 5, pronunciation: "/ˈmjuːzɪk/", teluguMeaning: "సంగీతం", englishMeaning: "organized sound" },
+            { word: "special", length: 7, pronunciation: "/ˈspeʃl/", teluguMeaning: "ప్రత్యేక", englishMeaning: "different from usual" },
+            { word: "gift", length: 4, pronunciation: "/ɡɪft/", teluguMeaning: "బహుమతి", englishMeaning: "present" },
+            { word: "enthralls", length: 9, pronunciation: "/ɪnˈθrɔːlz/", teluguMeaning: "ముగ్ధులను చేస్తుంది", englishMeaning: "captivates" },
+            { word: "well", length: 4, pronunciation: "/wel/", teluguMeaning: "సరే", englishMeaning: "satisfactorily" },
+            { word: "animals", length: 7, pronunciation: "/ˈænɪmlz/", teluguMeaning: "ప్రాణులు", englishMeaning: "living creatures" },
+            { word: "say", length: 3, pronunciation: "/seɪ/", teluguMeaning: "చెప్పగలను", englishMeaning: "express in words" },
+            { word: "magic", length: 5, pronunciation: "/ˈmædʒɪk/", teluguMeaning: "మాయా", englishMeaning: "supernatural power" },
+            { word: "has", length: 3, pronunciation: "/hæz/", teluguMeaning: "ఉంది", englishMeaning: "possesses" },
+            { word: "put", length: 3, pronunciation: "/pʊt/", teluguMeaning: "పెట్టాలి", englishMeaning: "place" },
+            { word: "lot", length: 3, pronunciation: "/lɒt/", teluguMeaning: "చాలా", englishMeaning: "large amount" },
+            { word: "practice", length: 8, pronunciation: "/ˈpræktɪs/", teluguMeaning: "సాధన", englishMeaning: "repeated exercise" },
+            { word: "effort", length: 6, pronunciation: "/ˈefərt/", teluguMeaning: "ప్రయత్నం", englishMeaning: "attempt" },
+            { word: "know", length: 4, pronunciation: "/noʊ/", teluguMeaning: "తెలుసు", englishMeaning: "have knowledge" },
+            { word: "makes", length: 5, pronunciation: "/meɪks/", teluguMeaning: "చేస్తుంది", englishMeaning: "causes to be" },
+            { word: "person", length: 6, pronunciation: "/ˈpɜːrsn/", teluguMeaning: "వ్యక్తి", englishMeaning: "human being" },
+            { word: "perfect", length: 7, pronunciation: "/ˈpɜːrfɪkt/", teluguMeaning: "పరిపూర్ణ", englishMeaning: "flawless" },
+            { word: "blessed", length: 7, pronunciation: "/blest/", teluguMeaning: "దీవించబడ్డాను", englishMeaning: "made holy" },
+            { word: "perform", length: 7, pronunciation: "/pərˈfɔːrm/", teluguMeaning: "ప్రదర్శించడానికి", englishMeaning: "present" },
+            { word: "concerts", length: 8, pronunciation: "/ˈkɒnsərts/", teluguMeaning: "కచేరీలు", englishMeaning: "musical performances" },
+            { word: "around", length: 6, pronunciation: "/əˈraʊnd/", teluguMeaning: "చుట్టూ", englishMeaning: "on all sides" },
+            { word: "world", length: 5, pronunciation: "/wɜːrld/", teluguMeaning: "ప్రపంచం", englishMeaning: "earth" },
+            { word: "Keep", length: 4, pronunciation: "/kiːp/", teluguMeaning: "చేస్తూనే ఉండండి", englishMeaning: "continue" },
+            { word: "practicing", length: 10, pronunciation: "/ˈpræktɪsɪŋ/", teluguMeaning: "సాధన చేస్తూ", englishMeaning: "doing repeatedly" },
+            { word: "day", length: 3, pronunciation: "/deɪ/", teluguMeaning: "రోజు", englishMeaning: "24-hour period" },
+            { word: "will", length: 4, pronunciation: "/wɪl/", teluguMeaning: "చేస్తారు", englishMeaning: "future auxiliary" },
+            { word: "become", length: 6, pronunciation: "/bɪˈkʌm/", teluguMeaning: "అవుతారు", englishMeaning: "come to be" },
+            { word: "Bhaja", length: 5, pronunciation: "/ˈbɑːdʒə/", teluguMeaning: "భజ", englishMeaning: "worship (Sanskrit)" },
+            { word: "Govindam", length: 8, pronunciation: "/ɡoʊˈvɪndəm/", teluguMeaning: "గోవిందం", englishMeaning: "name of Krishna" },
+            { word: "Kalyani", length: 7, pronunciation: "/kəˈljɑːni/", teluguMeaning: "కళ్యాణి", englishMeaning: "name" },
+            { word: "Yamini", length: 6, pronunciation: "/jəˈmiːni/", teluguMeaning: "యామిని", englishMeaning: "night" },
+            { word: "Krishna", length: 7, pronunciation: "/ˈkrɪʃnə/", teluguMeaning: "కృష్ణ", englishMeaning: "name" },
+            { word: "Murthy", length: 6, pronunciation: "/ˈmɜːrθi/", teluguMeaning: "మూర్తి", englishMeaning: "image" },
+            { word: "dears", length: 5, pronunciation: "/dɪərz/", teluguMeaning: "ప్రియమైనవారు", englishMeaning: "beloved ones" },
+            { word: "classical", length: 9, pronunciation: "/ˈklæsɪkl/", teluguMeaning: "శాస్త్రీయ", englishMeaning: "traditional" },
+            { word: "dancer", length: 6, pronunciation: "/ˈdænsər/", teluguMeaning: "నర్తకి", englishMeaning: "person who dances" },
+            { word: "Bharatanatyam", length: 12, pronunciation: "/bəˈrɑːtəˌnɑːtjəm/", teluguMeaning: "భరతనాట్యం", englishMeaning: "classical dance form" },
+            { word: "Kuchipudi", length: 9, pronunciation: "/kuːˈtʃiːpʊdi/", teluguMeaning: "కూచిపూడి", englishMeaning: "classical dance form" },
+            { word: "great", length: 5, pronunciation: "/ɡreɪt/", teluguMeaning: "గొప్ప", englishMeaning: "large" },
+            { word: "passion", length: 7, pronunciation: "/ˈpæʃn/", teluguMeaning: "అభిరుచి", englishMeaning: "strong feeling" },
+            { word: "dance", length: 5, pronunciation: "/dæns/", teluguMeaning: "నృత్యం", englishMeaning: "movement to music" },
+            { word: "Continuous", length: 10, pronunciation: "/kənˈtɪnjuəs/", teluguMeaning: "నిరంతర", englishMeaning: "without stopping" },
+            { word: "lead", length: 4, pronunciation: "/liːd/", teluguMeaning: "దారి తీస్తాయి", englishMeaning: "guide" },
+            { word: "excellence", length: 10, pronunciation: "/ˈeksələns/", teluguMeaning: "శ్రేష్ఠత", englishMeaning: "high quality" },
+            { word: "Enhance", length: 7, pronunciation: "/ɪnˈhæns/", teluguMeaning: "పెంపొందించుకోండి", englishMeaning: "improve" },
+            { word: "passions", length: 8, pronunciation: "/ˈpæʃnz/", teluguMeaning: "అభిరుచులు", englishMeaning: "strong interests" },
+            { word: "best", length: 4, pronunciation: "/best/", teluguMeaning: "శుభాకాంక్షలు", englishMeaning: "good wishes" },
+            { word: "Sarala", length: 6, pronunciation: "/səˈrɑːlə/", teluguMeaning: "సరళ", englishMeaning: "simple" },
+            { word: "Sarojini", length: 8, pronunciation: "/səˈroʊdʒɪni/", teluguMeaning: "సరోజినీ", englishMeaning: "lotus" },
+            { word: "Naidu", length: 5, pronunciation: "/ˈnaɪduː/", teluguMeaning: "నాయుడు", englishMeaning: "leader" },
+            { word: "Writing", length: 7, pronunciation: "/ˈraɪtɪŋ/", teluguMeaning: "రచన", englishMeaning: "creating text" },
+            { word: "poetry", length: 6, pronunciation: "/ˈpoʊətri/", teluguMeaning: "కవిత్వం", englishMeaning: "literary work" },
+            { word: "hobby", length: 5, pronunciation: "/ˈhɒbi/", teluguMeaning: "హాబీ", englishMeaning: "leisure activity" },
+            { word: "People", length: 6, pronunciation: "/ˈpiːpl/", teluguMeaning: "ప్రజలు", englishMeaning: "human beings" },
+            { word: "call", length: 4, pronunciation: "/kɔːl/", teluguMeaning: "పిలుస్తారు", englishMeaning: "name" },
+            { word: "Nightingale", length: 11, pronunciation: "/ˈnaɪtɪŋɡeɪl/", teluguMeaning: "బుల్బుల్ పక్షి", englishMeaning: "type of bird" },
+            { word: "Since", length: 5, pronunciation: "/sɪns/", teluguMeaning: "నుండి", englishMeaning: "from that time" },
+            { word: "fourteenth", length: 10, pronunciation: "/ˌfɔːrˈtiːnθ/", teluguMeaning: "పద్నాలుగవ", englishMeaning: "14th" },
+            { word: "year", length: 4, pronunciation: "/jɪər/", teluguMeaning: "సంవత్సరం", englishMeaning: "period of 365 days" },
+            { word: "been", length: 4, pronunciation: "/biːn/", teluguMeaning: "ప్రారంభించాను", englishMeaning: "past participle of be" },
+            { word: "also", length: 4, pronunciation: "/ˈɔːlsoʊ/", teluguMeaning: "కూడా", englishMeaning: "in addition" },
+            { word: "poet", length: 4, pronunciation: "/ˈpoʊɪt/", teluguMeaning: "కవి", englishMeaning: "writer of poems" },
+            { word: "urge", length: 4, pronunciation: "/ɜːrdʒ/", teluguMeaning: "ఆసక్తి", englishMeaning: "strong desire" },
+            { word: "vision", length: 6, pronunciation: "/ˈvɪʒn/", teluguMeaning: "దృష్టి", englishMeaning: "ability to see" },
+            { word: "creativity", length: 10, pronunciation: "/ˌkriːeɪˈtɪvəti/", teluguMeaning: "సృజనాత్మకత", englishMeaning: "ability to create" },
+            { word: "wish", length: 4, pronunciation: "/wɪʃ/", teluguMeaning: "కోరుకుంటున్నాను", englishMeaning: "desire" },
+            { word: "Latha", length: 5, pronunciation: "/ˈlɑːθə/", teluguMeaning: "లత", englishMeaning: "creeper" },
+            { word: "Jhansi", length: 6, pronunciation: "/ˈdʒænsi/", teluguMeaning: "ఝాన్సీ", englishMeaning: "city name" },
+            { word: "Lakshmi", length: 7, pronunciation: "/ˈlɑːkʃmi/", teluguMeaning: "లక్ష్మీ", englishMeaning: "goddess of wealth" },
+            { word: "Bai", length: 3, pronunciation: "/baɪ/", teluguMeaning: "బాయి", englishMeaning: "lady" },
+            { word: "Bharath", length: 7, pronunciation: "/ˈbɑːrət/", teluguMeaning: "భరత్", englishMeaning: "India" },
+            { word: "Mathaki", length: 7, pronunciation: "/məˈθɑːki/", teluguMeaning: "మాతకి", englishMeaning: "to mother" },
+            { word: "Jai", length: 3, pronunciation: "/dʒaɪ/", teluguMeaning: "జై", englishMeaning: "victory" },
+            { word: "queen", length: 5, pronunciation: "/kwiːn/", teluguMeaning: "రాణి", englishMeaning: "female ruler" },
+            { word: "Being", length: 5, pronunciation: "/ˈbiːɪŋ/", teluguMeaning: "అయినప్పటికీ", englishMeaning: "although" },
+            { word: "lady", length: 4, pronunciation: "/ˈleɪdi/", teluguMeaning: "మహిళ", englishMeaning: "woman" },
+            { word: "exhibited", length: 9, pronunciation: "/ɪɡˈzɪbɪtɪd/", teluguMeaning: "ప్రదర్శించాను", englishMeaning: "showed" },
+            { word: "courage", length: 7, pronunciation: "/ˈkɜːrɪdʒ/", teluguMeaning: "ధైర్యం", englishMeaning: "bravery" },
+            { word: "fighting", length: 8, pronunciation: "/ˈfaɪtɪŋ/", teluguMeaning: "పోరాడటం", englishMeaning: "engaging in battle" },
+            { word: "against", length: 7, pronunciation: "/əˈɡenst/", teluguMeaning: "వ్యతిరేకంగా", englishMeaning: "in opposition to" },
+            { word: "British", length: 7, pronunciation: "/ˈbrɪtɪʃ/", teluguMeaning: "బ్రిటిష్", englishMeaning: "from Britain" },
+            { word: "revolt", length: 6, pronunciation: "/rɪˈvoʊlt/", teluguMeaning: "తిరుగుబాటు", englishMeaning: "rebellion" },
+            { word: "brave", length: 5, pronunciation: "/breɪv/", teluguMeaning: "ధైర్యవంతులు", englishMeaning: "courageous" },
+            { word: "stand", length: 5, pronunciation: "/stænd/", teluguMeaning: "నిలబడండి", englishMeaning: "be upright" },
+            { word: "nation", length: 6, pronunciation: "/ˈneɪʃn/", teluguMeaning: "దేశం", englishMeaning: "country" },
+            { word: "Mounika", length: 7, pronunciation: "/maʊˈniːkə/", teluguMeaning: "మౌనిక", englishMeaning: "name" },
+            { word: "Mary", length: 4, pronunciation: "/ˈmeəri/", teluguMeaning: "మేరీ", englishMeaning: "name" },
+            { word: "Kom", length: 3, pronunciation: "/kɒm/", teluguMeaning: "కోమ్", englishMeaning: "surname" },
+            { word: "boxer", length: 5, pronunciation: "/ˈbɒksər/", teluguMeaning: "బాక్సర్", englishMeaning: "person who boxes" },
+            { word: "Magnificent", length: 11, pronunciation: "/mæɡˈnɪfɪsnt/", teluguMeaning: "అద్భుతమైన", englishMeaning: "extremely good" },
+            { word: "interested", length: 10, pronunciation: "/ˈɪntrəstɪd/", teluguMeaning: "ఆసక్తి కలిగి", englishMeaning: "having interest" },
+            { word: "martial", length: 7, pronunciation: "/ˈmɑːrʃl/", teluguMeaning: "యుద్ధ", englishMeaning: "related to war" },
+            { word: "arts", length: 4, pronunciation: "/ɑːrts/", teluguMeaning: "కళలు", englishMeaning: "creative activities" },
+            { word: "attitude", length: 8, pronunciation: "/ˈætɪtuːd/", teluguMeaning: "వైఖరి", englishMeaning: "way of thinking" },
+            { word: "compromise", length: 10, pronunciation: "/ˈkɒmprəmaɪz/", teluguMeaning: "రాజీ", englishMeaning: "settlement" },
+            { word: "can", length: 3, pronunciation: "/kæn/", teluguMeaning: "చేయగలరు", englishMeaning: "able to" },
+            { word: "mind", length: 4, pronunciation: "/maɪnd/", teluguMeaning: "మనస్సు", englishMeaning: "intellect" },
+            { word: "key", length: 3, pronunciation: "/kiː/", teluguMeaning: "కీ", englishMeaning: "important thing" },
+            { word: "try", length: 3, pronunciation: "/traɪ/", teluguMeaning: "ప్రయత్నించండి", englishMeaning: "attempt" },
+            { word: "fly", length: 3, pronunciation: "/flaɪ/", teluguMeaning: "ఎగురవేయండి", englishMeaning: "make soar" },
+            { word: "flag", length: 4, pronunciation: "/flæɡ/", teluguMeaning: "జెండా", englishMeaning: "symbol of country" },
+            { word: "high", length: 4, pronunciation: "/haɪ/", teluguMeaning: "ఎత్తుగా", englishMeaning: "at great height" },
+            { word: "arena", length: 5, pronunciation: "/əˈriːnə/", teluguMeaning: "రంగస్థలం", englishMeaning: "area for sports" },
+            { word: "sports", length: 6, pronunciation: "/spɔːrts/", teluguMeaning: "క్రీడలు", englishMeaning: "physical games" },
+            { word: "games", length: 5, pronunciation: "/ɡeɪmz/", teluguMeaning: "ఆటలు", englishMeaning: "activities for amusement" },
+            { word: "After", length: 5, pronunciation: "/ˈæftər/", teluguMeaning: "తర్వాత", englishMeaning: "following in time" },
+            { word: "witnessing", length: 10, pronunciation: "/ˈwɪtnəsɪŋ/", teluguMeaning: "చూసిన తర్వాత", englishMeaning: "seeing" },
+            { word: "events", length: 6, pronunciation: "/ɪˈvents/", teluguMeaning: "కార్యక్రమాలు", englishMeaning: "occurrences" },
+            { word: "realized", length: 8, pronunciation: "/ˈriːəlaɪzd/", teluguMeaning: "గ్రహించారు", englishMeaning: "understood" },
+            { word: "education", length: 9, pronunciation: "/ˌedʒuˈkeɪʃn/", teluguMeaning: "విద్య", englishMeaning: "teaching and learning" },
+            { word: "essential", length: 9, pronunciation: "/ɪˈsenʃl/", teluguMeaning: "అవసరం", englishMeaning: "necessary" },
+            { word: "confidence", length: 10, pronunciation: "/ˈkɒnfɪdəns/", teluguMeaning: "ఆత్మవిశ్వాసం", englishMeaning: "self-assurance" },
+            { word: "voice", length: 5, pronunciation: "/vɔɪs/", teluguMeaning: "స్వరంలో", englishMeaning: "sound produced by mouth" },
+            { word: "said", length: 4, pronunciation: "/sed/", teluguMeaning: "చెప్పారు", englishMeaning: "spoke" },
+            { word: "Go", length: 2, pronunciation: "/ɡoʊ/", teluguMeaning: "వెళ్ళండి", englishMeaning: "move" },
+            { word: "ahead", length: 5, pronunciation: "/əˈhed/", teluguMeaning: "ముందుకు", englishMeaning: "forward" },
+            { word: "prove", length: 5, pronunciation: "/pruːv/", teluguMeaning: "నిరూపించు", englishMeaning: "demonstrate" },
+            { word: "yourself", length: 8, pronunciation: "/jɔːrˈself/", teluguMeaning: "నిన్ను", englishMeaning: "reflexive form of you" },
+            { word: "assured", length: 7, pronunciation: "/əˈʃʊəd/", teluguMeaning: "భరోసా ఇచ్చారు", englishMeaning: "promised" },
+            { word: "send", length: 4, pronunciation: "/send/", teluguMeaning: "పంపించడానికి", englishMeaning: "cause to go" },
+            { word: "every", length: 5, pronunciation: "/ˈevri/", teluguMeaning: "ప్రతి", englishMeaning: "each one" }
+        ];
+
+        // Verbs data
+        const verbs = [
+            { verb: "am", telugu: "నేను", pronunciation: "/æm/", example: "I am Ameena" },
+            { verb: "celebrating", telugu: "పండుగ జరుపుకుంటున్నాము", pronunciation: "/ˈselɪbreɪtɪŋ/", example: "we are celebrating our School Day" },
+            { verb: "made", telugu: "చేసింది", pronunciation: "/meɪd/", example: "atmosphere made me rush" },
+            { verb: "rush", telugu: "వేగంగా వెళ్ళు", pronunciation: "/rʌʃ/", example: "made me rush towards it" },
+            { verb: "invited", telugu: "ఆహ్వానించబడ్డారు", pronunciation: "/ɪnˈvaɪtɪd/", example: "parents were invited" },
+            { verb: "going", telugu: "వెళుతున్నాను", pronunciation: "/ˈɡoʊɪŋ/", example: "I'm going to see all my friends" },
+            { verb: "see", telugu: "చూడటానికి", pronunciation: "/siː/", example: "going to see all my friends" },
+            { verb: "sat", telugu: "కూర్చున్నాను", pronunciation: "/sæt/", example: "I sat in the first row" },
+            { verb: "started", telugu: "ప్రారంభమైంది", pronunciation: "/ˈstɑːrtɪd/", example: "The programme started" },
+            { verb: "performed", telugu: "ప్రదర్శించారు", pronunciation: "/pərˈfɔːrmd/", example: "schoolmates performed different activities" },
+            { verb: "touched", telugu: "స్పృశించింది", pronunciation: "/tʌtʃt/", example: "role play touched my heart" },
+            { verb: "would", telugu: "చేస్తాను", pronunciation: "/wʊd/", example: "I would like to share" },
+            { verb: "like", telugu: "ఇష్టపడతాను", pronunciation: "/laɪk/", example: "would like to share" },
+            { verb: "share", telugu: "పంచుకోండి", pronunciation: "/ʃer/", example: "like to share those dialogues" },
+            { verb: "see", telugu: "చూస్తాను", pronunciation: "/siː/", example: "I see God in every human being" },
+            { verb: "find", telugu: "కనుగొంటారు", pronunciation: "/faɪnd/", example: "you find true happiness" },
+            { verb: "bless", telugu: "ఆశీర్వదించు", pronunciation: "/bles/", example: "God bless you" },
+            { verb: "know", telugu: "తెలుసా", pronunciation: "/noʊ/", example: "Do you know me" },
+            { verb: "travelled", telugu: "ప్రయాణించారు", pronunciation: "/ˈtrævld/", example: "who travelled in space" },
+            { verb: "view", telugu: "చూడటానికి", pronunciation: "/vjuː/", example: "to view the beautiful blue earth" },
+            { verb: "believe", telugu: "నమ్మండి", pronunciation: "/bɪˈliːv/", example: "I believe in one thing" },
+            { verb: "love", telugu: "ఇష్టం", pronunciation: "/lʌv/", example: "I love mathematics" },
+            { verb: "play", telugu: "ఆడతాను", pronunciation: "/pleɪ/", example: "I play with numbers" },
+            { verb: "titled", telugu: "బిరుదు ఇచ్చింది", pronunciation: "/ˈtaɪtld/", example: "titled me as the 'Human Computer'" },
+            { verb: "Put", telugu: "పెట్టండి", pronunciation: "/pʊt/", example: "Put your efforts" },
+            { verb: "Wish", telugu: "కోరుకుంటున్నాను", pronunciation: "/wɪʃ/", example: "Wish you good luck" },
+            { verb: "enthralls", telugu: "ముగ్ధులను చేస్తుంది", pronunciation: "/ɪnˈθrɔːlz/", example: "Music enthralls human beings" },
+            { verb: "say", telugu: "చెప్పగలను", pronunciation: "/seɪ/", example: "I can say that music is magic" },
+            { verb: "makes", telugu: "చేస్తుంది", pronunciation: "/meɪks/", example: "Practice makes a person perfect" },
+            { verb: "blessed", telugu: "దీవించబడ్డాను", pronunciation: "/blest/", example: "I am blessed to perform concerts" },
+            { verb: "perform", telugu: "ప్రదర్శించడానికి", pronunciation: "/pərˈfɔːrm/", example: "to perform concerts around the world" },
+            { verb: "Keep", telugu: "చేస్తూనే ఉండండి", pronunciation: "/kiːp/", example: "Keep on practicing" },
+            { verb: "become", telugu: "అవుతారు", pronunciation: "/bɪˈkʌm/", example: "you will become perfect" },
+            { verb: "have", telugu: "కలిగి ఉన్నాను", pronunciation: "/hæv/", example: "I have a great passion" },
+            { verb: "lead", telugu: "దారి తీస్తాయి", pronunciation: "/liːd/", example: "lead to excellence" },
+            { verb: "Enhance", telugu: "పెంపొందించుకోండి", pronunciation: "/ɪnˈhæns/", example: "Enhance your passions" },
+            { verb: "call", telugu: "పిలుస్తారు", pronunciation: "/kɔːl/", example: "People call me" },
+            { verb: "been", telugu: "ప్రారంభించాను", pronunciation: "/biːn/", example: "I have been writing poetry" },
+            { verb: "writing", telugu: "రాయడం", pronunciation: "/ˈraɪtɪŋ/", example: "have been writing poetry" },
+            { verb: "say", telugu: "చెప్పగలను", pronunciation: "/seɪ/", example: "I say that you can also become" },
+            { verb: "wish", telugu: "కోరుకుంటున్నాను", pronunciation: "/wɪʃ/", example: "I wish you good luck" },
+            { verb: "was", telugu: "నేను", pronunciation: "/wʌz/", example: "I was the queen of Jhansi" },
+            { verb: "exhibited", telugu: "ప్రదర్శించాను", pronunciation: "/ɪɡˈzɪbɪtɪd/", example: "I exhibited my courage" },
+            { verb: "fighting", telugu: "పోరాడటం", pronunciation: "/ˈfaɪtɪŋ/", example: "by fighting against the British" },
+            { verb: "stand", telugu: "నిలబడండి", pronunciation: "/stænd/", example: "stand for the nation" },
+            { verb: "interested", telugu: "ఆసక్తి కలిగి", pronunciation: "/ˈɪntrəstɪd/", example: "I'm interested in martial arts" },
+            { verb: "try", telugu: "ప్రయత్నించండి", pronunciation: "/traɪ/", example: "try to fly the Indian flag" },
+            { verb: "fly", telugu: "ఎగురవేయండి", pronunciation: "/flaɪ/", example: "fly the Indian flag high" },
+            { verb: "witnessing", telugu: "చూసిన", pronunciation: "/ˈwɪtnəsɪŋ/", example: "After witnessing all the events" },
+            { verb: "realized", telugu: "గ్రహించారు", pronunciation: "/ˈriːəlaɪzd/", example: "my parents realized" },
+            { verb: "said", telugu: "చెప్పారు", pronunciation: "/sed/", example: "they said" },
+            { verb: "prove", telugu: "నిరూపించు", pronunciation: "/pruːv/", example: "prove yourself" },
+            { verb: "assured", telugu: "భరోసా ఇచ్చారు", pronunciation: "/əˈʃʊəd/", example: "They assured me" },
+            { verb: "send", telugu: "పంపించడానికి", pronunciation: "/send/", example: "to send me to school" }
+        ];
+
+        // Opposites data
+        const opposites = [
+            { word: "jubilant", telugu: "ఆనందభరితమైన", opposite: "sad", teluguOpposite: "దుఃఖంగా" },
+            { word: "excited", telugu: "ఉత్సాహంగా", opposite: "calm", teluguOpposite: "శాంతంగా" },
+            { word: "long", telugu: "చిన్న", opposite: "short", teluguOpposite: "పొట్టి" },
+            { word: "first", telugu: "మొదటి", opposite: "last", teluguOpposite: "చివరి" },
+            { word: "started", telugu: "ప్రారంభమైంది", opposite: "ended", teluguOpposite: "ముగిసింది" },
+            { word: "different", telugu: "వివిధ", opposite: "same", teluguOpposite: "అదే" },
+            { word: "touched", telugu: "స్పృశించింది", opposite: "ignored", teluguOpposite: "పట్టించుకోలేదు" },
+            { word: "thankful", telugu: "కృతజ్ఞత", opposite: "ungrateful", teluguOpposite: "కృతఘ్నత" },
+            { word: "every", telugu: "ప్రతి", opposite: "none", teluguOpposite: "ఎవరూ లేరు" },
+            { word: "Helping", telugu: "సహాయం చేసే", opposite: "hindering", teluguOpposite: "అడ్డుపడే" },
+            { word: "better", telugu: "మెరుగ్గా", opposite: "worse", teluguOpposite: "చెత్తగా" },
+            { word: "dear", telugu: "ప్రియమైన", opposite: "hated", teluguOpposite: "ద్వేషించబడిన" },
+            { word: "true", telugu: "నిజమైన", opposite: "false", teluguOpposite: "తప్పుడు" },
+            { word: "first", telugu: "మొదటి", opposite: "last", teluguOpposite: "చివరి" },
+            { word: "beautiful", telugu: "అందమైన", opposite: "ugly", teluguOpposite: "అగ్లీ" },
+            { word: "wonderful", telugu: "అద్భుతమైన", opposite: "terrible", teluguOpposite: "భయంకరమైన" },
+            { word: "impossible", telugu: "అసాధ్యం", opposite: "possible", teluguOpposite: "సాధ్యం" },
+            { word: "strong", telugu: "బలమైన", opposite: "weak", teluguOpposite: "బలహీనమైన" },
+            { word: "love", telugu: "ఇష్టం", opposite: "hate", teluguOpposite: "ద్వేషం" },
+            { word: "logical", telugu: "తార్కిక", opposite: "illogical", teluguOpposite: "తర్కరహిత" },
+            { word: "successful", telugu: "విజయవంతమైన", opposite: "unsuccessful", teluguOpposite: "విఫలమైన" },
+            { word: "good", telugu: "మంచి", opposite: "bad", teluguOpposite: "చెడు" },
+            { word: "special", telugu: "ప్రత్యేక", opposite: "ordinary", teluguOpposite: "సాధారణ" },
+            { word: "magic", telugu: "మాయా", opposite: "ordinary", teluguOpposite: "సాధారణ" },
+            { word: "perfect", telugu: "పరిపూర్ణ", opposite: "imperfect", teluguOpposite: "అసంపూర్ణ" },
+            { word: "blessed", telugu: "దీవించబడ్డాను", opposite: "cursed", teluguOpposite: "శపించబడ్డాను" },
+            { word: "great", telugu: "గొప్ప", opposite: "small", teluguOpposite: "చిన్న" },
+            { word: "Continuous", telugu: "నిరంతర", opposite: "interrupted", teluguOpposite: "అంతరాయం" },
+            { word: "excellence", telugu: "శ్రేష్ఠత", opposite: "mediocrity", teluguOpposite: "సగటు" },
+            { word: "call", telugu: "పిలుస్తారు", opposite: "ignore", teluguOpposite: "పట్టించుకోకు" },
+            { word: "become", telugu: "అవ్వండి", opposite: "cease", teluguOpposite: "నిలిచిపోవు" },
+            { word: "queen", telugu: "రాణి", opposite: "king", teluguOpposite: "రాజు" },
+            { word: "courage", telugu: "ధైర్యం", opposite: "cowardice", teluguOpposite: "పిరికితనం" },
+            { verb: "fighting", telugu: "పోరాడటం", opposite: "surrendering", teluguOpposite: "అతిసరణ" },
+            { word: "brave", telugu: "ధైర్యవంతులు", opposite: "cowardly", teluguOpposite: "పిరికి" },
+            { word: "Magnificent", telugu: "అద్భుతమైన", opposite: "ordinary", teluguOpposite: "సాధారణ" },
+            { word: "interested", telugu: "ఆసక్తి కలిగి", opposite: "uninterested", teluguOpposite: "ఆసక్తి లేని" },
+            { word: "compromise", telugu: "రాజీ", opposite: "insist", teluguOpposite: "పట్టుబట్టండి" },
+            { word: "strong", telugu: "బలమైన", opposite: "weak", teluguOpposite: "బలహీనమైన" },
+            { word: "high", telugu: "ఎత్తుగా", opposite: "low", teluguOpposite: "తక్కువ" },
+            { word: "essential", telugu: "అవసరం", opposite: "optional", teluguOpposite: "ఐచ్ఛికం" },
+            { word: "confidence", telugu: "ఆత్మవిశ్వాసం", opposite: "doubt", teluguOpposite: "సందేహం" },
+            { word: "prove", telugu: "నిరూపించు", opposite: "disprove", teluguOpposite: "ఖండించు" },
+            { word: "assured", telugu: "భరోసా ఇచ్చారు", opposite: "doubted", teluguOpposite: "సందేహించారు" },
+            { word: "every", telugu: "ప్రతి", opposite: "never", teluguOpposite: "ఎప్పుడూ కాదు" }
+        ];
+
+        // Singular/Plural data
+        const singularPlural = [
+            { singular: "day", teluguSingular: "రోజు", plural: "days", teluguPlural: "రోజులు" },
+            { singular: "parent", teluguSingular: "తల్లిదండ్రుడు", plural: "parents", teluguPlural: "తల్లిదండ్రులు" },
+            { singular: "friend", teluguSingular: "స్నేహితుడు", plural: "friends", teluguPlural: "స్నేహితులు" },
+            { singular: "row", teluguSingular: "వరుస", plural: "rows", teluguPlural: "వరుసలు" },
+            { singular: "brother", teluguSingular: "సోదరుడు", plural: "brothers", teluguPlural: "సోదరులు" },
+            { singular: "side", teluguSingular: "వైపు", plural: "sides", teluguPlural: "వైపులా" },
+            { singular: "schoolmate", teluguSingular: "పాఠశాల స్నేహితుడు", plural: "schoolmates", teluguPlural: "పాఠశాల స్నేహితులు" },
+            { singular: "activity", teluguSingular: "కార్యక్రమం", plural: "activities", teluguPlural: "కార్యక్రమాలు" },
+            { singular: "woman", teluguSingular: "మహిళ", plural: "women", teluguPlural: "మహిళలు" },
+            { singular: "dialogue", teluguSingular: "సంభాషణ", plural: "dialogues", teluguPlural: "సంభాషణలు" },
+            { singular: "hand", teluguSingular: "చెయ్యి", plural: "hands", teluguPlural: "చేతులు" },
+            { singular: "lip", teluguSingular: "పెదవి", plural: "lips", teluguPlural: "పెదవులు" },
+            { singular: "child", teluguSingular: "బిడ్డ", plural: "children", teluguPlural: "పిల్లలు" },
+            { singular: "being", teluguSingular: "జీవి", plural: "beings", teluguPlural: "జీవులు" },
+            { singular: "earth", teluguSingular: "భూమి", plural: "earths", teluguPlural: "భూములు" },
+            { singular: "thing", teluguSingular: "విషయం", plural: "things", teluguPlural: "విషయాలు" },
+            { singular: "person", teluguSingular: "వ్యక్తి", plural: "persons", teluguPlural: "వ్యక్తులు" },
+            { singular: "concert", teluguSingular: "కచేరీ", plural: "concerts", teluguPlural: "కచేరీలు" },
+            { singular: "dancer", teluguSingular: "నర్తకి", plural: "dancers", teluguPlural: "నర్తకులు" },
+            { singular: "passion", teluguSingular: "అభిరుచి", plural: "passions", teluguPlural: "అభిరుచులు" },
+            { singular: "effort", teluguSingular: "ప్రయత్నం", plural: "efforts", teluguPlural: "ప్రయత్నాలు" },
+            { singular: "year", teluguSingular: "సంవత్సరం", plural: "years", teluguPlural: "సంవత్సరాలు" },
+            { singular: "lady", teluguSingular: "మహిళ", plural: "ladies", teluguPlural: "మహిళలు" },
+            { singular: "event", teluguSingular: "కార్యక్రమం", plural: "events", teluguPlural: "కార్యక్రమాలు" },
+            { singular: "voice", teluguSingular: "స్వరం", plural: "voices", teluguPlural: "స్వరాలు" },
+            { singular: "flag", teluguSingular: "జెండా", plural: "flags", teluguPlural: "జెండాలు" },
+            { singular: "sport", teluguSingular: "క్రీడ", plural: "sports", teluguPlural: "క్రీడలు" },
+            { singular: "game", teluguSingular: "ఆట", plural: "games", teluguPlural: "ఆటలు" }
+        ];
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Display story with highlighted words
+            displayStory();
             
-            // Clear previous content
-            vocabularyContent.innerHTML = '';
+            // Display all words
+            displayAllWords();
             
-            // Create category title
-            const title = document.createElement('h3');
-            title.textContent = data.title;
-            vocabularyContent.appendChild(title);
+            // Display verbs table
+            displayVerbs();
             
-            // Create list
-            const list = document.createElement('ul');
-            list.className = 'vocab-list';
+            // Display opposites table
+            displayOpposites();
             
-            // Add items to list
-            data.items.forEach(item => {
-                const listItem = document.createElement('li');
-                
-                if (category === 'opposites') {
-                    listItem.innerHTML = `<span>${item.word}</span> <span class="telugu">⇨ ${item.opposite}</span>`;
-                } else {
-                    listItem.innerHTML = `<span>${item.word}</span> <span class="telugu">${item.meaning}</span>`;
+            // Display singular/plural table
+            displaySingularPlural();
+            
+            // Setup navigation
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.nav-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Hide all content sections
+                    document.querySelectorAll('.content-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // Show selected section
+                    const sectionId = this.getAttribute('data-section');
+                    document.getElementById(sectionId).classList.add('active');
+                });
+            });
+            
+            // Setup modal close button
+            document.querySelector('.close-modal').addEventListener('click', function() {
+                document.getElementById('wordModal').style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            document.getElementById('wordModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
                 }
-                
-                list.appendChild(listItem);
+            });
+        });
+        
+        // Function to display story with highlighted words
+        function displayStory() {
+            const storyElement = document.getElementById('storyText');
+            
+            // Process the story text
+            const lines = storyText.split('\n');
+            let formattedStory = '';
+            
+            // Sort vocabulary by word length (longest first) to avoid partial highlighting
+            const sortedVocab = [...vocabulary].sort((a, b) => b.word.length - a.word.length);
+            
+            // Create a map for quick lookup
+            const vocabMap = {};
+            sortedVocab.forEach(item => {
+                vocabMap[item.word.toLowerCase()] = item;
             });
             
-            vocabularyContent.appendChild(list);
+            lines.forEach(line => {
+                if (line.trim()) {
+                    if (line.includes(':')) {
+                        // This is a dialogue
+                        const parts = line.split(':');
+                        formattedStory += `<p class="dialogue-header"><strong>${parts[0].trim()}:</strong></p>`;
+                        formattedStory += `<p class="dialogue-content">${highlightWordsInText(parts.slice(1).join(':').trim(), vocabMap)}</p>`;
+                    } else {
+                        formattedStory += `<p>${highlightWordsInText(line.trim(), vocabMap)}</p>`;
+                    }
+                }
+            });
             
-            // Update active button
-            buttons.forEach(btn => btn.classList.remove('active-category'));
+            storyElement.innerHTML = formattedStory;
             
-            // Highlight the active button based on category
-            switch(category) {
-                case 'threeLetter':
-                    btnThreeLetter.classList.add('active-category');
-                    break;
-                case 'fourLetter':
-                    btnFourLetter.classList.add('active-category');
-                    break;
-                case 'fiveLetter':
-                    btnFiveLetter.classList.add('active-category');
-                    break;
-                case 'verbs':
-                    btnVerbs.classList.add('active-category');
-                    break;
-                case 'opposites':
-                    btnOpposites.classList.add('active-category');
-                    break;
+            // Add click event to highlighted words
+            document.querySelectorAll('.highlight-word').forEach(word => {
+                word.addEventListener('click', function() {
+                    const wordText = this.getAttribute('data-word');
+                    showWordDetails(wordText);
+                });
+            });
+        }
+        
+        // Helper function to highlight words in text
+        function highlightWordsInText(text, vocabMap) {
+            const words = text.split(/(\s+)/);
+            return words.map(word => {
+                const cleanWord = word.toLowerCase().replace(/[.,!?"':;-]/g, '');
+                if (vocabMap[cleanWord] && cleanWord.length >= 2) {
+                    const wordData = vocabMap[cleanWord];
+                    const lengthClass = `word-${Math.min(wordData.length, 7)}`; // Cap at 7+
+                    return `<span class="highlight-word ${lengthClass}" data-word="${wordData.word}">${word}</span>`;
+                }
+                return word;
+            }).join('');
+        }
+        
+        // Function to display all words
+        function displayAllWords() {
+            const grid = document.getElementById('allWordsGrid');
+            grid.innerHTML = '';
+            
+            // Group words by length
+            const wordsByLength = {};
+            vocabulary.forEach(word => {
+                if (!wordsByLength[word.length]) {
+                    wordsByLength[word.length] = [];
+                }
+                wordsByLength[word.length].push(word);
+            });
+            
+            // Sort lengths and display
+            const sortedLengths = Object.keys(wordsByLength).sort((a, b) => a - b);
+            
+            sortedLengths.forEach(length => {
+                // Create section for each length
+                const section = document.createElement('div');
+                section.style.gridColumn = '1 / -1';
+                section.style.marginTop = '20px';
+                section.innerHTML = `<h3>${length}-letter words</h3>`;
+                grid.appendChild(section);
+                
+                // Create cards for words of this length
+                wordsByLength[length].forEach(wordData => {
+                    const card = document.createElement('div');
+                    card.className = 'vocab-card';
+                    
+                    // Determine color class based on length
+                    const lengthClass = `word-${Math.min(wordData.length, 7)}`;
+                    
+                    card.innerHTML = `
+                        <div class="word-header">
+                            <div class="word">${wordData.word} <span class="word-length">${wordData.length} letters</span></div>
+                            <button class="sound-btn" data-word="${wordData.word}">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </div>
+                        <div class="pronunciation">${wordData.pronunciation}</div>
+                        <div class="telugu-meaning">${wordData.teluguMeaning}</div>
+                        <div class="english-meaning">${wordData.englishMeaning}</div>
+                    `;
+                    
+                    grid.appendChild(card);
+                    
+                    // Add sound functionality
+                    card.querySelector('.sound-btn').addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        speakWord(wordData.word);
+                    });
+                    
+                    // Add click functionality to whole card
+                    card.addEventListener('click', function() {
+                        showWordDetails(wordData.word);
+                    });
+                });
+            });
+        }
+        
+        // Function to display verbs table
+        function displayVerbs() {
+            const table = document.getElementById('verbsTable');
+            table.innerHTML = '';
+            
+            verbs.forEach(verb => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${verb.verb}</strong></td>
+                    <td>${verb.telugu}</td>
+                    <td>${verb.pronunciation}</td>
+                    <td>${verb.example}</td>
+                `;
+                table.appendChild(row);
+                
+                // Add click functionality
+                row.addEventListener('click', function() {
+                    showWordDetails(verb.verb);
+                });
+            });
+        }
+        
+        // Function to display opposites table
+        function displayOpposites() {
+            const table = document.getElementById('oppositesTable');
+            table.innerHTML = '';
+            
+            opposites.forEach(pair => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${pair.word}</strong></td>
+                    <td>${pair.telugu}</td>
+                    <td>${pair.opposite}</td>
+                    <td>${pair.teluguOpposite}</td>
+                `;
+                table.appendChild(row);
+                
+                // Add click functionality for the word
+                row.cells[0].addEventListener('click', function() {
+                    showWordDetails(pair.word);
+                });
+                
+                // Add click functionality for the opposite word
+                row.cells[2].addEventListener('click', function() {
+                    showWordDetails(pair.opposite);
+                });
+            });
+        }
+        
+        // Function to display singular/plural table
+        function displaySingularPlural() {
+            const table = document.getElementById('singularPluralTable');
+            table.innerHTML = '';
+            
+            singularPlural.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${item.singular}</strong></td>
+                    <td>${item.teluguSingular}</td>
+                    <td><strong>${item.plural}</strong></td>
+                    <td>${item.teluguPlural}</td>
+                `;
+                table.appendChild(row);
+                
+                // Add click functionality for singular
+                row.cells[0].addEventListener('click', function() {
+                    showWordDetails(item.singular);
+                });
+                
+                // Add click functionality for plural
+                row.cells[2].addEventListener('click', function() {
+                    showWordDetails(item.plural);
+                });
+            });
+        }
+        
+        // Function to show word details in modal
+        function showWordDetails(word) {
+            // Find word in vocabulary
+            const wordData = vocabulary.find(item => item.word.toLowerCase() === word.toLowerCase());
+            
+            // Find if it's a verb
+            const verbData = verbs.find(item => item.verb.toLowerCase() === word.toLowerCase());
+            
+            // Find if it has an opposite
+            const oppositeData = opposites.find(item => 
+                item.word.toLowerCase() === word.toLowerCase() || 
+                item.opposite.toLowerCase() === word.toLowerCase()
+            );
+            
+            // Find if it's in singular/plural
+            const singularPluralData = singularPlural.find(item => 
+                item.singular.toLowerCase() === word.toLowerCase() || 
+                item.plural.toLowerCase() === word.toLowerCase()
+            );
+            
+            const modalContent = document.getElementById('modalContent');
+            let html = `<div style="font-size: 1.8rem; font-weight: bold; color: var(--secondary); margin-bottom: 15px;">${word}</div>`;
+            
+            if (wordData) {
+                html += `
+                    <div style="margin-bottom: 10px;">
+                        <div><strong>Length:</strong> ${wordData.length} letters</div>
+                        <div><strong>Pronunciation:</strong> ${wordData.pronunciation}</div>
+                        <div class="telugu-meaning"><strong>Telugu Meaning:</strong> ${wordData.teluguMeaning}</div>
+                        <div><strong>English Meaning:</strong> ${wordData.englishMeaning}</div>
+                    </div>
+                `;
+            }
+            
+            if (verbData) {
+                html += `
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #eee;">
+                        <div style="color: var(--primary); font-weight: bold; margin-bottom: 8px;">Verb Information:</div>
+                        <div><strong>Telugu:</strong> ${verbData.telugu}</div>
+                        <div><strong>Example:</strong> "${verbData.example}"</div>
+                    </div>
+                `;
+            }
+            
+            if (oppositeData) {
+                const isWord = oppositeData.word.toLowerCase() === word.toLowerCase();
+                const oppositeWord = isWord ? oppositeData.opposite : oppositeData.word;
+                const oppositeTelugu = isWord ? oppositeData.teluguOpposite : oppositeData.telugu;
+                
+                html += `
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #eee;">
+                        <div style="color: var(--accent); font-weight: bold; margin-bottom: 8px;">Opposite Word:</div>
+                        <div><strong>${oppositeWord}</strong> - ${oppositeTelugu}</div>
+                    </div>
+                `;
+            }
+            
+            if (singularPluralData) {
+                const isSingular = singularPluralData.singular.toLowerCase() === word.toLowerCase();
+                const singular = singularPluralData.singular;
+                const plural = singularPluralData.plural;
+                
+                html += `
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #eee;">
+                        <div style="color: var(--telugu-color); font-weight: bold; margin-bottom: 8px;">Singular/Plural:</div>
+                        <div><strong>Singular:</strong> ${singular} (${singularPluralData.teluguSingular})</div>
+                        <div><strong>Plural:</strong> ${plural} (${singularPluralData.teluguPlural})</div>
+                    </div>
+                `;
+            }
+            
+            html += `
+                <button class="sound-btn" style="margin-top: 20px; padding: 10px 20px; font-size: 1rem;" data-word="${word}">
+                    <i class="fas fa-volume-up"></i> Hear Pronunciation
+                </button>
+            `;
+            
+            modalContent.innerHTML = html;
+            
+            // Show modal
+            document.getElementById('wordModal').style.display = 'flex';
+            
+            // Add event listener to modal sound button
+            modalContent.querySelector('.sound-btn').addEventListener('click', function() {
+                speakWord(word);
+            });
+        }
+        
+        // Function to speak a word
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.rate = 0.8;
+                utterance.pitch = 1;
+                utterance.volume = 1;
+                
+                speechSynthesis.speak(utterance);
+            } else {
+                alert("Your browser doesn't support text-to-speech. Try Chrome or Edge.");
             }
         }
-
-        // Add event listeners to buttons
-        btnThreeLetter.addEventListener('click', () => displayVocabulary('threeLetter'));
-        btnFourLetter.addEventListener('click', () => displayVocabulary('fourLetter'));
-        btnFiveLetter.addEventListener('click', () => displayVocabulary('fiveLetter'));
-        btnVerbs.addEventListener('click', () => displayVocabulary('verbs'));
-        btnOpposites.addEventListener('click', () => displayVocabulary('opposites'));
-
-        // Initialize with 3-letter words
-        displayVocabulary('threeLetter');
-
-        // Highlight difficult words in the lesson text
-        function highlightDifficultWords() {
-            const difficultWords = [
-                'jubilant', 'atmosphere', 'occasion', 'exhibited', 
-                'revolt', 'compromise', 'essential', 'confidence',
-                'commitment', 'assured', 'logical', 'enthalls',
-                'excellence', 'creativity', 'magnificent'
-            ];
-            
-            const lessonText = document.querySelector('.lesson-text');
-            let text = lessonText.innerHTML;
-            
-            difficultWords.forEach(word => {
-                const regex = new RegExp(`\\b${word}\\b`, 'gi');
-                text = text.replace(regex, `<span class="highlight">${word}</span>`);
-            });
-            
-            lessonText.innerHTML = text;
-        }
-
-        // Call the function when page loads
-        document.addEventListener('DOMContentLoaded', highlightDifficultWords);
     </script>
 </body>
 </html>
