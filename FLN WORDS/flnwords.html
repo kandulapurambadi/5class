@@ -93,13 +93,7 @@ Loading words...
 
 /* ===== CONFIG ===== */
 
-const filePath = "./words.txt";   // Folder + file path
-const perPage = 4;
-
-let words = [];
-let page = 0;
-
-/* ===== LOAD TEXT FILE ===== */
+const filePath = "./words.txt";   // SAME FOLDER SAFE PATH
 
 fetch(filePath)
 .then(response => {
@@ -113,7 +107,8 @@ return response.text();
 })
 .then(data => {
 
-words = data.split(/\r?\n/).filter(w => w.trim() !== "");
+words = data.split(/\r?\n/)
+.filter(w => w.trim() !== "");
 
 showPage();
 
@@ -185,5 +180,6 @@ alert("సరైన పేజీ సంఖ్య ఇవ్వండి");
 
 </body>
 </html>
+
 
 
