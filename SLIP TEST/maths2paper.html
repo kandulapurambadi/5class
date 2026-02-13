@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<title>Class 4 & 5 Maths Test – Personalized Question Paper</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+    font-family: 'Anek Telugu', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0b3d91, #072c66);
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    max-width: 1200px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #0b3d91;
+    padding-bottom: 20px;
+}
+
+.logo-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    position: relative;
+    background: #fff;
+    border: 6px solid #0b3d91;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.logo-circle img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+}
+
+.logo-text {
+    position: relative;
+    z-index: 2;
+    font-weight: 800;
+    color: #0b3d91;
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+    line-height: 1.5;
+}
+
+h1 {
+    color: #0b3d91;
+    font-size: 32px;
+    font-weight: 800;
+    margin: 10px 0;
+}
+
+.subtitle {
+    color: #4a5568;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* Topic Tags */
+.topics-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.topic-tag {
+    background: #e8f0fe;
+    color: #0b3d91;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    border: 2px solid #0b3d91;
+}
+
+/* Timer */
+.timer {
+    background: #b43b3b;
+    color: #fff;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 24px;
+    font-weight: 800;
+    margin: 15px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Student Input Panel */
+.student-panel {
+    background: #f2f6ff;
+    padding: 30px;
+    border-radius: 20px;
+    margin: 20px 0 30px;
+    border: 2px dashed #0b3d91;
+    text-align: center;
+}
+
+.student-input-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.student-input-group input {
+    padding: 15px 25px;
+    border-radius: 30px;
+    border: 2px solid #b0c4ff;
+    font-size: 1rem;
+    outline: none;
+    min-width: 280px;
+    font-family: 'Anek Telugu', sans-serif;
+    background: white;
+}
+
+.student-input-group input:focus {
+    border-color: #0b3d91;
+    box-shadow: 0 0 0 3px rgba(11,61,145,0.1);
+}
+
+.student-input-group select {
+    padding: 15px 25px;
+    border-radius: 30px;
+    border: 2px solid #b0c4ff;
+    font-size: 1rem;
+    outline: none;
+    min-width: 200px;
+    font-family: 'Anek Telugu', sans-serif;
+    background: white;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 15px 35px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: #0b3d91;
+    color: #fff;
+    transition: 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+    background: #072c66;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #4a5568;
+}
+
+.btn-secondary:hover {
+    background: #2d3748;
+}
+
+.btn-success {
+    background: #2f855a;
+}
+
+.btn-success:hover {
+    background: #276749;
+}
+
+.btn-large {
+    padding: 18px 40px;
+    font-size: 1.2rem;
+}
+
+/* Student Info Display */
+.student-info-card {
+    background: linear-gradient(135deg, #0b3d91, #072c66);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 50px;
+    margin: 20px 0;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 700;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.student-details {
+    background: #e8f0fe;
+    padding: 15px 25px;
+    border-radius: 40px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    color: #0b3d91;
+    font-weight: 600;
+}
+
+/* Question Paper */
+.paper-header {
+    background: #e8f0fe;
+    padding: 25px;
+    border-radius: 20px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.student-info {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0b3d91;
+}
+
+.paper-controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.questions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.question-card {
+    background: #f7f9ff;
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 6px solid #0b3d91;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.question-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.question-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+}
+
+.question-number {
+    font-weight: 800;
+    color: #0b3d91;
+    min-width: 35px;
+    font-size: 1.1rem;
+    background: #e8f0fe;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.question-content {
+    flex: 1;
+}
+
+.question-text {
+    font-weight: 600;
+    font-size: 16px;
+    color: #2d3748;
+    line-height: 1.4;
+}
+
+.te {
+    color: #0b3d91;
+    font-weight: 600;
+}
+
+.en {
+    color: #4a5568;
+    font-weight: 400;
+}
+
+.separator {
+    margin: 0 5px;
+    color: #cbd5e0;
+}
+
+.topic-badge {
+    display: inline-block;
+    background: #cbd5e0;
+    color: #2d3748;
+    padding: 3px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.answer-area {
+    margin-top: 15px;
+}
+
+.answer-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #4a5568;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.answer-area input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 2px solid #cbd5ff;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.answer-area input:focus {
+    border-color: #0b3d91;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(11,61,145,0.1);
+}
+
+/* Score Display */
+.score-badge {
+    background: #0b3d91;
+    color: #fff;
+    padding: 20px 50px;
+    border-radius: 40px;
+    font-size: 2rem;
+    font-weight: 800;
+    display: inline-block;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.feedback-section {
+    background: #fff3cd;
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+/* Print Styles */
+@media print {
+    .student-panel, .btn, .paper-controls, .timer, .no-print {
+        display: none !important;
+    }
+    
+    .main-container {
+        box-shadow: none;
+        padding: 10px;
+        background: white;
+    }
+    
+    .question-card {
+        break-inside: avoid;
+        border: 1px solid #ddd;
+        box-shadow: none;
+    }
+    
+    .paper-header {
+        background: none;
+        border: 1px solid #0b3d91;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .questions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .student-info-card {
+        font-size: 20px;
+        padding: 15px 20px;
+    }
+    
+    .student-input-group input,
+    .student-input-group select {
+        min-width: 100%;
+    }
+}
+
+.generated-date {
+    color: #718096;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.instructions {
+    background: #f0f4ff;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.instructions h3 {
+    color: #0b3d91;
+    margin-bottom: 10px;
+}
+
+.instructions ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.instructions li {
+    padding: 5px 0;
+    color: #4a5568;
+}
+
+.instructions li:before {
+    content: "📌";
+    margin-right: 10px;
+}
+
+.watermark {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.1;
+    font-size: 60px;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Class Section Headers */
+.class-section {
+    margin: 20px 0 10px;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 700;
+    color: #0b3d91;
+    border-left: 6px solid #0b3d91;
+    padding-left: 15px;
+}
+
+.student-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.student-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    background: #e8f0fe;
+    color: #0b3d91;
+    border: 2px solid #0b3d91;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.student-btn:hover {
+    background: #0b3d91;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.class-badge {
+    display: inline-block;
+    background: #b43b3b;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    margin-left: 5px;
+}
+</style>
+</head>
+<body>
+
+<div class="main-container">
+    <!-- Header -->
+    <div class="header">
+        <div class="logo-circle">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23f0f4ff'/%3E%3Ctext x='50' y='55' font-size='40' text-anchor='middle' fill='%230b3d91'%3E📐%3C/text%3E%3C/svg%3E" alt="Math Logo">
+            <div class="logo-text">
+                కందులాపురం బడి<br>
+                <span style="font-size:12px;">Kandulapuram School</span>
+            </div>
+        </div>
+        
+        <h1>📊 తరగతి 4 & 5 - గణిత పరీక్ష</h1>
+        <div class="subtitle">
+            <span class="te">వ్యక్తిగతీకరించిన ప్రశ్నపత్రం</span> | 
+            <span class="en">Personalized Question Paper</span>
+        </div>
+        
+        <!-- Topics -->
+        <div class="topics-container">
+            <span class="topic-tag">🎯 Round off (10/100/1000)</span>
+            <span class="topic-tag">⚖️ >, <, =</span>
+            <span class="topic-tag">📈 Ascending/Descending</span>
+            <span class="topic-tag">📝 10 Questions</span>
+        </div>
+    </div>
+
+    <!-- Timer -->
+    <div style="text-align: center;" class="no-print">
+        <div class="timer" id="timer">⏳ 30:00</div>
+    </div>
+
+    <!-- Student Input Panel -->
+    <div class="student-panel no-print">
+        <h2 style="color: #0b3d91; margin-bottom: 20px;">👤 విద్యార్థి వివరాలు నమోదు చేయండి</h2>
+        <h3 style="color: #4a5568; margin-bottom: 25px;">Enter Student Details</h3>
+        
+        <div class="student-input-group">
+            <input type="text" id="studentNameTel" placeholder="తెలుగులో పేరు" value="యశ్విత">
+            <input type="text" id="studentNameEn" placeholder="English Name" value="Yaswitha">
+            <input type="text" id="rollNumber" placeholder="రోల్ నంబర్ / Roll Number" value="501">
+            <select id="classSelect">
+                <option value="5">తరగతి 5 | Class 5</option>
+                <option value="4">తరగతి 4 | Class 4</option>
+            </select>
+        </div>
+        
+        <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-large btn-success" onclick="generatePersonalizedPaper()">
+                📄 Generate My Question Paper
+            </button>
+            <button class="btn btn-large btn-secondary" onclick="resetAndNewStudent()">
+                🔄 New Student
+            </button>
+        </div>
+        
+        <!-- Class V Students -->
+        <div class="class-section">✨ తరగతి 5 | Class V Students</div>
+        <div class="student-buttons-container">
+            <button class="student-btn" onclick="loadStudent('యశ్విత', 'Yaswitha', '501', '5')">యశ్విత (Yaswitha)</button>
+            <button class="student-btn" onclick="loadStudent('కల్యాణి', 'Kalyani', '502', '5')">కల్యాణి (Kalyani)</button>
+            <button class="student-btn" onclick="loadStudent('సాజిద', 'Sajida', '503', '5')">సాజిద (Sajida)</button>
+            <button class="student-btn" onclick="loadStudent('అస్మ', 'Asma', '504', '5')">అస్మ (Asma)</button>
+            <button class="student-btn" onclick="loadStudent('అతియ ఫాతిమ', 'Athiya Fathima', '505', '5')">అతియ ఫాతిమ (Athiya)</button>
+            <button class="student-btn" onclick="loadStudent('ప్రవల్లిక', 'Pravallika', '506', '5')">ప్రవల్లిక (Pravallika)</button>
+            <button class="student-btn" onclick="loadStudent('చంద్ర శేఖర్', 'Chandra Sekhar', '507', '5')">చంద్ర శేఖర్ (Chandra)</button>
+        </div>
+
+        <!-- Class IV Students -->
+        <div class="class-section">🌟 తరగతి 4 | Class IV Students</div>
+        <div class="student-buttons-container">
+            <button class="student-btn" onclick="loadStudent('వసంత', 'Vasantha', '401', '4')">వసంత (Vasantha)</button>
+            <button class="student-btn" onclick="loadStudent('గీతిక', 'Geethika', '402', '4')">గీతిక (Geethika)</button>
+            <button class="student-btn" onclick="loadStudent('అంజలి', 'Anjali', '403', '4')">అంజలి (Anjali)</button>
+            <button class="student-btn" onclick="loadStudent('సుమయ్య', 'Sumayya', '404', '4')">సుమయ్య (Sumayya)</button>
+            <button class="student-btn" onclick="loadStudent('యాస్మీన్', 'Yasmeen', '405', '4')">యాస్మీన్ (Yasmeen)</button>
+            <button class="student-btn" onclick="loadStudent('నిహారిక', 'Niharika', '406', '4')">నిహారిక (Niharika)</button>
+            <button class="student-btn" onclick="loadStudent('రిమ్ష', 'Rimsha', '407', '4')">రిమ్ష (Rimsha)</button>
+            <button class="student-btn" onclick="loadStudent('సంజయ్', 'Sanjay', '408', '4')">సంజయ్ (Sanjay)</button>
+            <button class="student-btn" onclick="loadStudent('శ్రీకాంత్', 'Srikanth', '409', '4')">శ్రీకాంత్ (Srikanth)</button>
+        </div>
+        
+        <!-- Quick note about roll numbers -->
+        <p style="color: #718096; font-size: 12px; margin-top: 15px;">
+            <small>Click any student name to auto-fill details | విద్యార్థి పేరుపై క్లిక్ చేయండి</small>
+        </p>
+    </div>
+
+    <!-- Student Info Display (shown after generation) -->
+    <div id="studentInfoDisplay" style="display: none; text-align: center;"></div>
+
+    <!-- Question Paper Container -->
+    <div id="paperContainer"></div>
+    
+    <!-- Score Display -->
+    <div id="scoreDisplay" style="text-align: center;"></div>
+</div>
+
+<script>
+// Total time: 30 minutes
+let totalTime = 30 * 60;
+let timerInterval;
+let currentPaper = null;
+
+// Question Bank (100 unique questions)
+function generateMasterQuestionBank() {
+    let questions = [];
+    
+    // Generate 40 unique rounding questions
+    for(let i = 0; i < 40; i++) {
+        const type = i % 3;
+        let number, roundTo, answer;
+        
+        switch(type) {
+            case 0: // nearest 10
+                number = Math.floor(Math.random() * 900) + 100; // 100-999
+                answer = Math.round(number / 10) * 10;
+                roundTo = 10;
+                break;
+            case 1: // nearest 100
+                number = Math.floor(Math.random() * 9000) + 1000; // 1000-9999
+                answer = Math.round(number / 100) * 100;
+                roundTo = 100;
+                break;
+            case 2: // nearest 1000
+                number = Math.floor(Math.random() * 90000) + 10000; // 10000-99999
+                answer = Math.round(number / 1000) * 1000;
+                roundTo = 1000;
+                break;
+        }
+        
+        questions.push({
+            id: `R${i}`,
+            q_en: `Round off ${number} to the nearest ${roundTo}`,
+            q_te: `${number} ను దగ్గరి ${roundTo} కు సవరించండి`,
+            a: answer.toString(),
+            type: 'rounding',
+            hint: `Rounding to nearest ${roundTo}`
+        });
+    }
+    
+    // Generate 30 unique comparison questions
+    for(let i = 0; i < 30; i++) {
+        let num1 = Math.floor(Math.random() * 998) + 1; // 1-999
+        let num2;
+        
+        if (i % 5 === 0) {
+            num2 = num1; // Equal
+        } else if (i % 3 === 0) {
+            num2 = num1 + Math.floor(Math.random() * 50) + 1; // Greater
+        } else {
+            num2 = Math.max(1, num1 - Math.floor(Math.random() * 50) - 1); // Lesser
+        }
+        
+        let answer;
+        if (num1 > num2) answer = '>';
+        else if (num1 < num2) answer = '<';
+        else answer = '=';
+        
+        questions.push({
+            id: `C${i}`,
+            q_en: `${num1} ___ ${num2}`,
+            q_te: `${num1} ___ ${num2}`,
+            a: answer,
+            type: 'comparison',
+            hint: 'Use >, < or ='
+        });
+    }
+    
+    // Generate 30 unique ordering questions
+    for(let i = 0; i < 30; i++) {
+        let numbers = [];
+        for(let j = 0; j < 4; j++) {
+            numbers.push(Math.floor(Math.random() * 998) + 1);
+        }
+        
+        const type = i < 15 ? 'ascending' : 'descending';
+        const sortedNumbers = type === 'ascending' 
+            ? [...numbers].sort((a, b) => a - b)
+            : [...numbers].sort((a, b) => b - a);
+        
+        questions.push({
+            id: `O${i}`,
+            q_en: `Arrange in ${type} order: ${numbers.join(', ')}`,
+            q_te: `${type === 'ascending' ? 'ఆరోహణ' : 'అవరోహణ'} క్రమంలో అమర్చండి: ${numbers.join(', ')}`,
+            a: sortedNumbers.join(', '),
+            type: 'ordering',
+            hint: `${type} order`
+        });
+    }
+    
+    // Shuffle master questions
+    return questions.sort(() => Math.random() - 0.5);
+}
+
+// Master question bank (100 unique questions)
+const masterQuestions = generateMasterQuestionBank();
+
+function startTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        let minutes = Math.floor(totalTime / 60);
+        let seconds = totalTime % 60;
+        
+        document.getElementById("timer").innerText = "⏳ " + 
+            (minutes < 10 ? "0" : "") + minutes + ":" + 
+            (seconds < 10 ? "0" : "") + seconds;
+        
+        if (totalTime <= 0) {
+            clearInterval(timerInterval);
+            alert("⏰ సమయం ముగిసింది! Time Up!");
+        }
+        totalTime--;
+    }, 1000);
+}
+
+// Load student with class parameter
+function loadStudent(telName, enName, roll, studentClass) {
+    document.getElementById('studentNameTel').value = telName;
+    document.getElementById('studentNameEn').value = enName;
+    document.getElementById('rollNumber').value = roll;
+    document.getElementById('classSelect').value = studentClass;
+}
+
+// Reset for new student
+function resetAndNewStudent() {
+    document.getElementById('studentNameTel').value = '';
+    document.getElementById('studentNameEn').value = '';
+    document.getElementById('rollNumber').value = '';
+    document.getElementById('classSelect').value = '5';
+    document.getElementById('paperContainer').innerHTML = '';
+    document.getElementById('scoreDisplay').innerHTML = '';
+    document.getElementById('studentInfoDisplay').style.display = 'none';
+    document.getElementById('studentInfoDisplay').innerHTML = '';
+}
+
+// Generate personalized paper for the student
+function generatePersonalizedPaper() {
+    const telName = document.getElementById('studentNameTel').value.trim();
+    const enName = document.getElementById('studentNameEn').value.trim();
+    const rollNo = document.getElementById('rollNumber').value.trim();
+    const studentClass = document.getElementById('classSelect').value;
+    
+    if (!telName || !enName || !rollNo) {
+        alert('దయచేసి అన్ని వివరాలు నమోదు చేయండి / Please enter all details');
+        return;
+    }
+    
+    // Start timer
+    startTimer();
+    
+    // Get 10 random unique questions
+    const shuffled = [...masterQuestions].sort(() => 0.5 - Math.random());
+    const selectedQuestions = shuffled.slice(0, 10);
+    
+    // Store current paper
+    currentPaper = {
+        student: {
+            telName: telName,
+            enName: enName,
+            rollNo: rollNo,
+            class: studentClass
+        },
+        questions: selectedQuestions,
+        generatedDate: new Date().toLocaleString()
+    };
+    
+    // Display student info
+    document.getElementById('studentInfoDisplay').style.display = 'block';
+    document.getElementById('studentInfoDisplay').innerHTML = `
+        <div class="student-info-card">
+            👤 ${telName} (${enName}) | రోల్ ${rollNo} | Class ${studentClass}
+        </div>
+        <div class="student-details">
+            <span class="detail-item">📅 ${new Date().toLocaleDateString()}</span>
+            <span class="detail-item">⏱️ 30 Minutes</span>
+            <span class="detail-item">📝 Total Marks: 10</span>
+            <span class="detail-item">📋 10 Questions</span>
+        </div>
+    `;
+    
+    // Display the paper
+    displayPaper(currentPaper);
+}
+
+// Display the question paper
+function displayPaper(paper) {
+    let html = `
+        <div class="paper-header">
+            <div class="student-info">
+                📋 ${paper.student.telName} (${paper.student.enName}) - Class ${paper.student.class}
+                <div class="generated-date">Generated: ${paper.generatedDate}</div>
+            </div>
+            <div class="paper-controls no-print">
+                <button class="btn btn-secondary" onclick="regeneratePaper()">
+                    🔄 New Set of Questions
+                </button>
+                <button class="btn" onclick="window.print()">
+                    🖨️ Print Paper
+                </button>
+            </div>
+        </div>
+        <div class="questions-grid">
+    `;
+    
+    paper.questions.forEach((q, index) => {
+        html += `
+            <div class="question-card">
+                <div class="question-header">
+                    <span class="question-number">${index + 1}</span>
+                    <div class="question-content">
+                        <div class="question-text">
+                            <span class="te">${q.q_te}</span>
+                            <span class="separator">|</span>
+                            <span class="en">${q.q_en}</span>
+                        </div>
+                        <span class="topic-badge">${q.hint}</span>
+                        <div class="answer-area">
+                            <div class="answer-label">📝 సమాధానం / Answer:</div>
+                            <input type="text" id="ans-${index}" placeholder="మీ సమాధానం ఇక్కడ రాయండి...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    
+    html += `</div>
+        <div style="text-align: center; margin: 30px 0;" class="no-print">
+            <button class="btn btn-large btn-success" onclick="evaluatePaper()">
+                ✅ Evaluate My Answers
+            </button>
+        </div>`;
+    
+    document.getElementById("paperContainer").innerHTML = html;
+    document.getElementById("scoreDisplay").innerHTML = '';
+}
+
+// Regenerate paper with new questions
+function regeneratePaper() {
+    if (currentPaper) {
+        // Get new random questions
+        const shuffled = [...masterQuestions].sort(() => 0.5 - Math.random());
+        const newQuestions = shuffled.slice(0, 10);
+        
+        currentPaper.questions = newQuestions;
+        currentPaper.generatedDate = new Date().toLocaleString();
+        
+        displayPaper(currentPaper);
+    }
+}
+
+// Evaluate the paper
+function evaluatePaper() {
+    if (!currentPaper) return;
+    
+    let score = 0;
+    let results = [];
+    
+    currentPaper.questions.forEach((q, index) => {
+        const userAnswer = document.getElementById(`ans-${index}`)?.value.trim() || '';
+        
+        let isCorrect = false;
+        if (q.type === 'ordering') {
+            // Normalize for comparison
+            const normalizedUser = userAnswer.replace(/\s+/g, '').split(',').map(n => n.trim()).join(',');
+            const normalizedCorrect = q.a.replace(/\s+/g, '');
+            isCorrect = normalizedUser === normalizedCorrect;
+        } else {
+            isCorrect = userAnswer === q.a;
+        }
+        
+        if (isCorrect) score++;
+        
+        results.push({
+            question: q,
+            userAnswer: userAnswer || '—',
+            isCorrect: isCorrect
+        });
+    });
+    
+    let percentage = (score / 10) * 100;
+    let gradeMessage = percentage >= 80 ? '🏆 అద్భుతం! Excellent!' :
+                      percentage >= 60 ? '🎉 చాలా మంచిది! Very Good!' :
+                      percentage >= 40 ? '👍 మంచిది! Good!' :
+                      '📚 మరింత సాధన అవసరం! Practice More!';
+    
+    let feedback = `
+        <div style="text-align: center;">
+            <div class="score-badge">
+                🎯 ${score}/10 (${percentage}%)<br>
+                <small style="font-size: 18px;">${gradeMessage}</small>
+            </div>
+        </div>
+    `;
+    
+    // Show detailed feedback for wrong answers
+    if (score < 10) {
+        feedback += '<div class="feedback-section"><h3 style="color:#856404;">📋 సరైన సమాధానాలు / Correct Answers:</h3>';
+        
+        results.forEach((result, i) => {
+            if (!result.isCorrect) {
+                feedback += `
+                    <div style="padding: 10px; border-bottom: 1px solid #ffe69c;">
+                        <strong>ప్రశ్న ${i + 1}:</strong>
+                        <div>${result.question.q_te}</div>
+                        <div><span style="color:#0b3d91;">✓ సరైన సమాధానం: ${result.question.a}</span></div>
+                        <div><span style="color:#b43b3b;">✗ మీ సమాధానం: ${result.userAnswer}</span></div>
+                    </div>
+                `;
+            }
+        });
+        
+        feedback += '</div>';
+    }
+    
+    document.getElementById("scoreDisplay").innerHTML = feedback;
+}
+
+// Start timer when page loads
+window.onload = function() {
+    startTimer();
+    
+    // Load first student as default (Yaswitha from Class V)
+    loadStudent('యశ్విత', 'Yaswitha', '501', '5');
+};
+</script>
+
+<!-- Watermark for print -->
+<div class="watermark no-print">📐</div>
+
+</body>
+</html>
